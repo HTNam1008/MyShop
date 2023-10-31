@@ -1,38 +1,138 @@
-﻿<Window x:Class="OperatingSystemFilter.MainWindow"
+﻿<Window x:Class="myShop.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:OperatingSystemFilter"
+        xmlns:local="clr-namespace:myShop"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="WindowLoaded">
-    <DockPanel LastChildFill="True" Background="WhiteSmoke">
-        <Border BorderBrush="Black" BorderThickness="4,4,4,4" DockPanel.Dock="Left" Width="500" Background="Gray">
-            <DockPanel >
-                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-                    <TextBlock Margin="30,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center">Loại Sản phẩm:</TextBlock>
-                    <ComboBox Name="comboBox" SelectionChanged="comboBox_Selected">
+        Title="MyShop" Height="700" Width="1200">
 
-                    </ComboBox>
-                </StackPanel>
-                <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
-                    <Button Margin="150,0,0,0" Content="Previous" Width="67" Click="btnPrevious_Click"/>
-                    <ComboBox Name="comboPage" SelectionChanged="comboPage_Selected" Width="36">
+    <Window.Resources>
+        <FontFamily x:Key="test" >/res/font/#SVN-Transformer</FontFamily>
+    </Window.Resources>
 
-                    </ComboBox>
-                    <Button Content="Next" Width="60" Click="btnNext_Click"/>
-                </StackPanel>
-                <DataGrid Name="ListPhone" FontSize="30px" LoadingRow="DataGrid_LoadingRow">
+    <Grid Background="WhiteSmoke" Width="1200" Height="700" Margin="0,0,0,0">
+        <Border Width="100"  Background="Snow" CornerRadius="20 20 20 20" Margin="0,0,1100,0">
+            <StackPanel  Width="100" Height="700" Orientation="Vertical">
+                <Button x:Name="BtnProfile" Width="50" Height="50" Margin="20, 40, 20, 20" BorderThickness="0">
+                    <Button.Resources>
+                        <Style TargetType="Border" >
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                    <Image Source="/res/ava/ava_1.png"/>
+                </Button>
 
-                </DataGrid>
-            </DockPanel>
+                <Button x:Name="BtnOne" Width="25" Height="25" Margin="10, 30, 10, 10" BorderThickness="0">
+                    <Button.Resources>
+                        <Style TargetType="Border" >
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                    <Image Source="/res/ava/ava_1.png"/>
+                </Button>
+
+                <Button Background="Transparent" x:Name="BtnTwo" Width="25" Height="25" Margin="10, 10, 10, 10" BorderThickness="0">
+                    <Button.Resources>
+                        <Style TargetType="Border" >
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                    <Image Source="/res/icon/bar_chart.png"/>
+                </Button>
+
+                <Button x:Name="BtnThree" Background="Transparent" Width="25" Height="25" Margin="10, 10, 10, 10" BorderThickness="0">
+                    <Button.Resources>
+                        <Style TargetType="Border" >
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                    <Image Source="/res/icon/line_chart.png"/>
+                </Button>
+
+                <Button x:Name="BtnFour" Background="Transparent" Width="25" Height="25" Margin="10, 10, 10, 10" BorderThickness="0">
+                    <Button.Resources>
+                        <Style TargetType="Border" >
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                    <Image Source="/res/icon/pie_chart.png"/>
+                </Button>
+
+                <Path Fill="#FF000000" StrokeThickness="1" Stroke="#99000000" Data="M 20 0 L 80 0" Margin="0, 40, 0, 40"/>
+
+                <Button x:Name="BtnFive" Width="25" Height="25" Margin="10, 10, 10, 10" BorderThickness="0">
+                    <Button.Resources>
+                        <Style TargetType="Border" >
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                    <Image Source="/res/ava/ava_1.png"/>
+                </Button>
+
+                <Button x:Name="BtnSix" Background="Transparent" Width="25" Height="25" Margin="10, 10, 10, 10" BorderThickness="0">
+                    <Button.Resources>
+                        <Style TargetType="Border" >
+                            <Setter Property="CornerRadius" Value="8"/>
+                        </Style>
+                    </Button.Resources>
+                    <Image Source="/res/icon/exit.png"/>
+                </Button>
+            </StackPanel>
         </Border>
 
-        <Canvas DockPanel.Dock="Right">
-            <TextBlock Canvas.Left="49" Canvas.Top="118">Tên sản phẩm:</TextBlock>
-            <Label Content="{Binding Name}" Canvas.Left="130" Canvas.Top="114" Height="24" Width="170" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <TextBlock Canvas.Left="49" Canvas.Top="172">Hệ điều hành:</TextBlock>
-            <Label Content="{Binding Os}" Height="25" Width="108" Canvas.Left="130" Canvas.Top="167"/>
-        </Canvas>
-    </DockPanel>
+        <Border Width="800" Height="700" Padding="20 10" Margin="-100,0,100,0">
+            <StackPanel Width="760" Height="780" VerticalAlignment="Top">
+                <TextBlock FontFamily="{StaticResource test}"><Run Text="Hi..."/></TextBlock>
+                <TextBlock FontFamily="{StaticResource test}" FontSize="35"><Run Text="Welcome back"/></TextBlock>
+                <Border CornerRadius="20" Width="750" Background="Bisque" Height="250">
+                    <Image/>
+                </Border>
+                <Border Padding="10">
+                    <Grid Height="100">
+
+                        <Border CornerRadius="20" Width="200" Background="Bisque" Height="100" HorizontalAlignment="Left">
+                            <Image/>
+                        </Border>
+                        <Border CornerRadius="20" Width="200" Background="Bisque" Height="100" HorizontalAlignment="Center">
+                            <Image Margin="335,-3,-335,3"/>
+                        </Border>
+                        <Border CornerRadius="20" Width="200" Background="Bisque" Height="100" HorizontalAlignment="Right">
+                            <Image Margin="335,-3,-335,3"/>
+                        </Border>
+                    </Grid>
+                </Border>
+                <Grid>
+                    <Border CornerRadius="20" Width="315" Background="Bisque" Height="150" HorizontalAlignment="Left">
+                        <Image/>
+                    </Border>
+                    <Border CornerRadius="20" Width="315" Background="Bisque" HorizontalAlignment="Right">
+                        <Image />
+                    </Border>
+                </Grid>
+            </StackPanel>
+        </Border>
+        <Border CornerRadius="20, 0, 0, 20" Background="CadetBlue" HorizontalAlignment="Left" Width="300" Margin="900,0,0,0">
+            <StackPanel>
+                <Grid>
+                    <TextBlock Margin="20" FontFamily="{StaticResource test}">Calendar</TextBlock>
+                    <Button x:Name="BtnSeven" Width="25" Height="25" Margin="250,10,10,10" BorderThickness="0">
+                        <Button.Resources>
+                            <Style TargetType="Border" >
+                                <Setter Property="CornerRadius" Value="8"/>
+                            </Style>
+                        </Button.Resources>
+                        <Image Source="/res/ava/ava_1.png"/>
+                    </Button>
+                </Grid>
+                <Calendar Width="250" Margin="20"/>
+                <Border Background="Beige" CornerRadius="30" Height="260" Width="250">
+                    <ListView Width="225" Height="230" Background="Beige" BorderThickness="0" Margin="15,15,10,15"/>
+                </Border>
+                <Border Background="Beige" CornerRadius="30" Height="80" Width="250" Margin="15">
+                    <ListView Width="225" Height="50" Background="Beige" BorderThickness="0"/>
+                </Border>
+            </StackPanel>
+        </Border>
+    </Grid>
 </Window>
