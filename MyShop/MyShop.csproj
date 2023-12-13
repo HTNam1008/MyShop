@@ -1,0 +1,100 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="style\**" />
+    <EmbeddedResource Remove="style\**" />
+    <None Remove="style\**" />
+    <Page Remove="style\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="res\icon\bar_chart.png" />
+    <None Remove="res\icon\close.png" />
+    <None Remove="res\icon\exit.png" />
+    <None Remove="res\icon\home.png" />
+    <None Remove="res\icon\line_chart.png" />
+    <None Remove="res\icon\minimize.png" />
+    <None Remove="res\icon\notification.png" />
+    <None Remove="res\icon\order.png" />
+    <None Remove="res\icon\pie_chart.png" />
+    <None Remove="res\icon\product.png" />
+    <None Remove="res\icon\restore.png" />
+    <None Remove="res\icon\setting.png" />
+    <None Remove="res\icon\toggle.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ExcelDataReader" Version="3.6.0" />
+    <PackageReference Include="ExcelDataReader.DataSet" Version="3.6.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="res\icon\bar_chart.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="res\icon\close.png" />
+    <Resource Include="res\icon\exit.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="res\icon\home.png" />
+    <Resource Include="res\icon\line_chart.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="res\icon\minimize.png" />
+    <Resource Include="res\icon\notification.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="res\icon\order.png" />
+    <Resource Include="res\icon\pie_chart.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="res\icon\product.png" />
+    <Resource Include="res\icon\restore.png" />
+    <Resource Include="res\icon\setting.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="res\icon\toggle.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="res\ava\ava_1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="res\ava\ava_10.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="res\ava\ava_2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="res\ava\ava_3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="res\ava\ava_4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="res\ava\ava_5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="res\ava\ava_6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="res\ava\ava_7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="res\ava\ava_8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="res\ava\ava_9.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
