@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="controls\MyOption.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="controls\MyTextBox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="pages\InputDatabase.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="pages\SignIn.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="pages\SignUp.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="controls\MyOption.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="controls\MyTextBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="pages\InputDatabase.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="pages\SignIn.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="pages\SignUp.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,20 @@
+﻿MyShop
+1.0.0.0
+
+winexe
+C#
+.cs
+D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\My-Shop\MyShop\obj\Debug\net7.0-windows\
+MyShop
+none
+false
+TRACE;DEBUG;NET;NET7_0;NETCOREAPP
+D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\My-Shop\MyShop\App.xaml
+12-2059650510
+
+20-373264510
+214797643755
+controls\MyOption.xaml;controls\MyTextBox.xaml;controls\UserPopUp.xaml;MainWindow.xaml;pages\Home.xaml;pages\InputDatabase.xaml;pages\Order.xaml;pages\Product.xaml;pages\Setting.xaml;pages\SignIn.xaml;pages\SignUp.xaml;pages\Statistic.xaml;
+
+False
+
