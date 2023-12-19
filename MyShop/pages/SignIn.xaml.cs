@@ -71,7 +71,7 @@ namespace MyShop.pages
                 /*MessageBox.Show("Successfully connected to SQL Server");*/
                 if (rememberMe.IsChecked == true)
                 {
-                    var passwordInBytes = Encoding.UTF8.GetBytes(password);
+                    /*var passwordInBytes = Encoding.UTF8.GetBytes(password);
                     var entropy = new byte[20];
                     using (var rng = new RNGCryptoServiceProvider())
                     {
@@ -80,13 +80,15 @@ namespace MyShop.pages
                     var cypherText = ProtectedData.Protect(passwordInBytes, entropy,
                             DataProtectionScope.CurrentUser);
                     var passwordIn64 = Convert.ToBase64String(cypherText);
-                    var entropyIn64 = Convert.ToBase64String(entropy);
+                    var entropyIn64 = Convert.ToBase64String(entropy);*/
+
+                    string passwordIn64 = Encryption.Encrypt(password, "1234567890123456");
 
 
                     var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
                     config.AppSettings.Settings["Username"].Value = username;
                     config.AppSettings.Settings["Password"].Value = passwordIn64;
-                    config.AppSettings.Settings["Entropy"].Value = entropyIn64;
+                    /*config.AppSettings.Settings["Entropy"].Value = entropyIn64;*/
                     config.Save(ConfigurationSaveMode.Minimal);
 
                     ConfigurationManager.RefreshSection("appSettings");
