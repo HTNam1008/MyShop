@@ -108,7 +108,7 @@ namespace MyShop.pages
                     string passwordResult = (string)reader["Password"];
 
                     // unhash password
-                    string[] passwordResultSplit = passwordResult.Split("@@@@");
+                    /*string[] passwordResultSplit = passwordResult.Split("@@@@");
                     string passwordIn64 = passwordResultSplit[0];
                     string entropyIn64 = passwordResultSplit[1];
 
@@ -117,18 +117,21 @@ namespace MyShop.pages
 
                     var passwordInBytes = ProtectedData.Unprotect(cyperTextInBytes, entropyInBytes,
                                                DataProtectionScope.CurrentUser);
-                    var passwordResultUnhash = Encoding.UTF8.GetString(passwordInBytes);
+                    var passwordResultUnhash = Encoding.UTF8.GetString(passwordInBytes);*/
+
+                    string passwordResultUnhash = Encryption.Decrypt(passwordResult, "1234567890123456");
 
                     if (passwordResultUnhash == password)
                     {
                         /*MessageBox.Show("Successfully signed in");*/
+                        MessageBox.Show("Successfully signed in!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                         Window window = new InputDatabase();
                         window.Show();
                         this.Close();
                     }
                     else
                     {
-                        MessageBox.Show("Wrong password", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Wrong password!", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
                         Window window = new SignIn();
                         window.Show();
                         this.Close();
@@ -162,14 +165,16 @@ namespace MyShop.pages
 
             if (passwordIn64.Length != 0)
             {
-                var entropyIn64 = ConfigurationManager.AppSettings["Entropy"];
+                /*var entropyIn64 = ConfigurationManager.AppSettings["Entropy"];
 
                 var cyperTextInBytes = Convert.FromBase64String(passwordIn64);
                 var entropyInBytes = Convert.FromBase64String(entropyIn64);
 
                 var passwordInBytes = ProtectedData.Unprotect(cyperTextInBytes, entropyInBytes,
                     DataProtectionScope.CurrentUser);
-                var password = Encoding.UTF8.GetString(passwordInBytes);
+                var password = Encoding.UTF8.GetString(passwordInBytes);*/
+
+                string password = Encryption.Decrypt(passwordIn64, "1234567890123456");
                 passwordBox.Password = password;
 
                 txtUsername.Text = ConfigurationManager.AppSettings["Username"];

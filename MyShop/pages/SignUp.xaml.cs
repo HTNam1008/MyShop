@@ -76,7 +76,7 @@ namespace MyShop.pages
 
             if (connection != null)
             {
-                MessageBox.Show("Successfully connected to SQL Server");
+                /*MessageBox.Show("Successfully connected to SQL Server");*/
                 Database.Instance.ConnectionString = connectionString;
 
                 try
@@ -101,7 +101,7 @@ namespace MyShop.pages
                     string genderCustomer = newCustomer.Gender;
                     string password = newCustomer.Password;
 
-                    var passwordInBytes = Encoding.UTF8.GetBytes(password);
+/*                    var passwordInBytes = Encoding.UTF8.GetBytes(password);
                     var entropy = new byte[20];
                     using (var rng = new RNGCryptoServiceProvider())
                     {
@@ -112,7 +112,9 @@ namespace MyShop.pages
                     var passwordIn64 = Convert.ToBase64String(cypherText);
                     var entropyIn64 = Convert.ToBase64String(entropy);
 
-                    string passwordHash = passwordIn64.ToString() + "@@@@" + entropyIn64.ToString();
+                    string passwordHash = passwordIn64.ToString() + "@@@@" + entropyIn64.ToString();*/
+
+                    string passwordHash = Encryption.Encrypt(newCustomer.Password, "1234567890123456");
 
                     // add to database
                     string sql = @"insert into Customer(firstName, lastName, gender, email, address, phone, age, password) 
@@ -139,20 +141,20 @@ namespace MyShop.pages
                     int rows = command.ExecuteNonQuery();
                     if (rows > 0)
                     {
-                        MessageBox.Show("Successfully signed up");
+                        MessageBox.Show("Successfully signed up!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                         Window newWindow = new SignIn();
                         newWindow.Show();
                         this.Close();
                     }
                     else
                     {
-                        MessageBox.Show("Failed to sign up");
+                        MessageBox.Show("Failed to sign up!", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
 
                 }
                 catch (SqlException ex)
                 {
-                    MessageBox.Show(ex.Message + "\nFailed to sign up");
+                    MessageBox.Show($"{ex.Message}\nFailed to sign up!", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 Window window = new SignIn();
                 window.Show();
@@ -162,7 +164,7 @@ namespace MyShop.pages
 
         private void genderButton_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (sender == maleButton)
+/*            if (sender == maleButton)
             {
                 MessageBox.Show("Male");
                 gender = "Male";
@@ -171,7 +173,7 @@ namespace MyShop.pages
             {
                 MessageBox.Show("Female");
                 gender = "Female";
-            }
+            }*/
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

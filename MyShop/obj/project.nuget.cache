@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3ulW3s/ADqqhMhFIfWmkgLcjIbB9f7n6uNFUGpzoBiO/ZIZaZ5U5RXFYS8asFVodwpkttYhJ9lo6dzZRqhLD7g==",
+  "dgSpecHash": "b7E9hGDmrz0MwTkLqQL2v5Lr05r5QiHjSaEzgoVZtsMMcKjRaQbJoVQ3RHuVrvBegfgTcKrjP91Grm2nxvAC4Q==",
   "success": true,
-  "projectFilePath": "D:\\TRUONG TAN DAT\\DAI HOC DUNG HOC DAI\\Senior_3\\Windows Programming\\Git\\My-Shop\\MyShop\\MyShop.csproj",
+  "projectFilePath": "D:\\TRUONG TAN DAT\\DAI HOC DUNG HOC DAI\\Senior_3\\Windows Programming\\Git\\MyShop\\MyShop\\MyShop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
