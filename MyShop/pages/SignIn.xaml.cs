@@ -31,10 +31,11 @@ namespace MyShop.pages
         // sign in button
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            /*if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(passwordBox.Password))
+            if(string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(passwordBox.Password))
             {
-                MessageBox.Show("Successfully signed In");
-            }*/
+                MessageBox.Show("Please enter username and password!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             string username = txtUsername.Text;
             string password = passwordBox.Password;
 
@@ -151,6 +152,9 @@ namespace MyShop.pages
             else
             {
                 MessageBox.Show("Invalid username or password!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                Window window = new SignIn();
+                window.Show();
+                this.Close();
             }
         }
 

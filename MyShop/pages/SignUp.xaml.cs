@@ -156,6 +156,8 @@ namespace MyShop.pages
                 catch (SqlException ex)
                 {
                     MessageBox.Show($"{ex.Message}\nFailed to sign up!", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Window window1 = new SignUp();
+                    window1.Show();
                 }
                 Window window = new SignIn();
                 window.Show();
@@ -165,16 +167,16 @@ namespace MyShop.pages
 
         private void genderButton_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-/*            if (sender == maleButton)
+            if (sender == maleButton)
             {
-                MessageBox.Show("Male");
+                MessageBox.Show("You choose Male", "!!!", MessageBoxButton.OK, MessageBoxImage.Information);
                 gender = "Male";
             }
             else if (sender == femaleButton)
             {
-                MessageBox.Show("Female");
+                MessageBox.Show("You choose Female", "!!!", MessageBoxButton.OK, MessageBoxImage.Information);
                 gender = "Female";
-            }*/
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

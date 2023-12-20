@@ -33,6 +33,11 @@ namespace MyShop.pages
 
         private async void connectDatabaseButton_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(txtDatabase.Text))
+            {
+                MessageBox.Show("Please enter database name!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             string database = txtDatabase.Text;
 
             loadingBar.Visibility = Visibility.Visible;

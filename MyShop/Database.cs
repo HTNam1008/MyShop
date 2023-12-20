@@ -17,17 +17,15 @@ namespace MyShop
             {
                 if (_instance == null)
                 {
-                    _instance = new Server();
+                    _instance = new Server("");
                 }
                 return _instance;
             }
         }
-        public Server()
+        public Server(string name)
         {
-            // get name of server
-            Name = Environment.MachineName;
+            Name = name;
         }
-
     }
     public class Database
     {

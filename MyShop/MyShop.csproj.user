@@ -11,6 +11,9 @@
     <Compile Update="pages\InputDatabase.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="pages\InputServer.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="pages\SignIn.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -26,6 +29,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="pages\InputDatabase.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="pages\InputServer.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="pages\SignIn.xaml">
