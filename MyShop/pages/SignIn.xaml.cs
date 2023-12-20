@@ -22,6 +22,7 @@ namespace MyShop.pages
     /// </summary>
     public partial class SignIn : Window
     {
+        Server server = Server.Instance;
         public SignIn()
         {
             InitializeComponent();
@@ -39,7 +40,7 @@ namespace MyShop.pages
 
             // Data Source=DESKTOP-MQMBQC9;Initial Catalog=CustomerDB;Integrated Security=True
             var builder = new SqlConnectionStringBuilder();
-            builder.DataSource = "DESKTOP-MQMBQC9";
+            builder.DataSource = server.Name;
             builder.InitialCatalog = "MyShopDB";
             builder.IntegratedSecurity = true;
             builder.UserID = username;
@@ -126,14 +127,14 @@ namespace MyShop.pages
                     if (passwordResultUnhash == password)
                     {
                         /*MessageBox.Show("Successfully signed in");*/
-                        MessageBox.Show("Successfully signed in!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("Successfully signed in!", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
                         Window window = new InputDatabase();
                         window.Show();
                         this.Close();
                     }
                     else
                     {
-                        MessageBox.Show("Wrong password!", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Wrong password!", "Fail!", MessageBoxButton.OK, MessageBoxImage.Error);
                         Window window = new SignIn();
                         window.Show();
                         this.Close();
@@ -141,15 +142,15 @@ namespace MyShop.pages
                 }
                 else
                 {
-                    MessageBox.Show("User is not exist in database! Please sign up!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    Window window = new SignUp();
+                    MessageBox.Show("User is not exist in database! Please sign up!", "Fail!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Window window = new SignIn();
                     window.Show();
                     this.Close();
                 }
             }
             else
             {
-                MessageBox.Show("Invalid username or password!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Invalid username or password!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

@@ -20,6 +20,7 @@ namespace MyShop.pages
     /// </summary>
     public partial class InputDatabase : Window
     {
+        Server server = Server.Instance;
         public InputDatabase()
         {
             InitializeComponent();
@@ -32,11 +33,13 @@ namespace MyShop.pages
 
         private async void connectDatabaseButton_Click(object sender, RoutedEventArgs e)
         {
-            string server = txtServerName.Text;
             string database = txtDatabase.Text;
+
+            loadingBar.Visibility = Visibility.Visible;
+            loadingBar.IsIndeterminate = true;
             
             var builder = new SqlConnectionStringBuilder();
-            builder.DataSource = server;
+            builder.DataSource = server.Name;
             builder.InitialCatalog = database;
             builder.IntegratedSecurity = true;
             builder.TrustServerCertificate = true;
@@ -57,8 +60,8 @@ namespace MyShop.pages
                 {
                     if(ex.Number == 4060)
                     {
-                        MessageBoxResult result = MessageBox.Show($"Database {database} is not exist." +
-                            $"Do you want to create new database?", "!!!", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                        MessageBoxResult result = MessageBox.Show($"Database {database} is not exist. " +
+                            "Do you want to create new database?", "!!!", MessageBoxButton.YesNo, MessageBoxImage.Question);
                         if(result == MessageBoxResult.Yes)
                         {
                             try
@@ -91,7 +94,7 @@ namespace MyShop.pages
                             } catch(SqlException ex2)
                             {
                                 _connection = null;
-                                MessageBox.Show($"Cannot create database:\n{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                                MessageBox.Show($"Cannot create database:\n{ex.Message}", "Fail!", MessageBoxButton.OK, MessageBoxImage.Error);
                             }
                         }
                         else
@@ -103,11 +106,14 @@ namespace MyShop.pages
                     else
                     {
                         _connection = null;
-                        MessageBox.Show($"Cannot create database:\n{ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show($"Cannot create database:\n{ex.Message}", "Fail!", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
                 return _connection;
             });
+
+            loadingBar.Visibility = Visibility.Collapsed;
+            loadingBar.IsIndeterminate = false;
 
             if(connection != null)
             {
@@ -122,19 +128,6 @@ namespace MyShop.pages
                 window.Show();
                 this.Close();
             }
-        }
-
-        private void txtServerName_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtServerName.Text) && txtServerName.Text.Length > 0)
-                textServerName.Visibility = Visibility.Collapsed;
-            else
-                textServerName.Visibility = Visibility.Visible;
-        }
-
-        private void textServerName_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            txtServerName.Focus();
         }
 
         private void textDatabase_MouseDown(object sender, MouseButtonEventArgs e)

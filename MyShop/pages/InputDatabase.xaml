@@ -36,8 +36,8 @@
 
                 <StackPanel VerticalAlignment="Center">
                     <!--<TextBlock Text="Choose your database" Foreground="White" TextAlignment="Center" FontWeight="Bold" FontSize="30"/>-->
-                    <TextBlock Text="Enter your server's name and
-                               create/connect to database" TextWrapping="Wrap" FontStyle="Italic" Opacity="0.8" Margin="20 30 20 30" Style="{StaticResource NormalText}" />
+                    <TextBlock Text="Enter your database's name
+                               to create/connect" TextWrapping="Wrap" FontStyle="Italic" Opacity="0.8" Margin="20 30 20 30" Style="{StaticResource NormalText}" />
                     <Border CornerRadius="100" Width="100" Height="100" Background="#FFFFFF" Margin="15 40 20 20">
                         <Ellipse Width="95" Height="95">
                             <Ellipse.Fill>
@@ -51,18 +51,6 @@
         <Border Name="borderDatabase" Background="#FFFFFF" Grid.Column="1" CornerRadius="0 10 10 0" MouseDown="borderDatabase_MouseDown">
             <StackPanel VerticalAlignment="Center">
                 <TextBlock Text="Enter your database" Foreground="#3AB19B" Style="{StaticResource TitleText}" />
-                
-                <Border BorderBrush="#3AB19B" BorderThickness="1" Margin="70 7" CornerRadius="5">
-                    <Grid Margin="7 9">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-
-                        <TextBlock x:Name="textServerName" MouseDown="textServerName_MouseDown"  Text="Server's Name" Style="{StaticResource textHint}" />
-                        <TextBox x:Name="txtServerName" TextChanged="txtServerName_TextChanged"  Style="{StaticResource textBox}" />
-                    </Grid>
-                </Border>
 
                 <Border BorderBrush="#3AB19B" BorderThickness="1" Margin="70 7" CornerRadius="5">
                     <Grid Margin="7 9">
@@ -77,6 +65,8 @@
                 </Border>
                 <Button x:Name="connectDatabaseButton" Content="Connect" Click="connectDatabaseButton_Click" Style="{StaticResource mainButton}" />
                 <Button x:Name="backButton" Content="Back" Click="backButton_Click" Style="{StaticResource mainButton}"/>
+                <TextBlock Text=" " Foreground="#3AB19B" Style="{StaticResource TitleText}" />
+                <ProgressBar x:Name="loadingBar" Height="20" Width="150" Visibility="Hidden"/>
             </StackPanel>
         </Border>
     </Grid>

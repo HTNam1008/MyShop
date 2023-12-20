@@ -22,6 +22,7 @@ namespace MyShop.pages
     /// </summary>
     public partial class SignUp : Window
     {
+        Server server = Server.Instance;
         public string gender = "";
         public SignUp()
         {
@@ -51,7 +52,7 @@ namespace MyShop.pages
         {
             // connect to SQL Server
             var builder = new SqlConnectionStringBuilder();
-            builder.DataSource = "DESKTOP-MQMBQC9";
+            builder.DataSource = server.Name;
             builder.InitialCatalog = "MyShopDB";
             builder.IntegratedSecurity = true;
             builder.TrustServerCertificate = true;
@@ -141,14 +142,14 @@ namespace MyShop.pages
                     int rows = command.ExecuteNonQuery();
                     if (rows > 0)
                     {
-                        MessageBox.Show("Successfully signed up!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("Successfully signed up!", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
                         Window newWindow = new SignIn();
                         newWindow.Show();
                         this.Close();
                     }
                     else
                     {
-                        MessageBox.Show("Failed to sign up!", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Failed to sign up!", "Fail!", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
 
                 }

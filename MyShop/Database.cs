@@ -7,6 +7,28 @@ using Microsoft.Data.SqlClient;
 
 namespace MyShop
 {
+    public class Server
+    {
+        private static Server? _instance = null;
+        public string Name { get; set; }
+        public static Server Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new Server();
+                }
+                return _instance;
+            }
+        }
+        public Server()
+        {
+            // get name of server
+            Name = Environment.MachineName;
+        }
+
+    }
     public class Database
     {
         private static Database? _instance = null;
