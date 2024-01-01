@@ -82,8 +82,40 @@ namespace MyShop.pages
 
                 try
                 {
+                    // Create random ID from 000 to 999
+                    // After create ID, check if it exists in database => re-create ID
+                    // if not => use it
+                    string idString = "";
+                    bool isExist = true;
+                    while (isExist)
+                    {
+                        Random random = new Random();
+                        int id = random.Next(0, 999);
+                        idString = id.ToString();
+                        if (id < 10)
+                        {
+                            idString = "00" + idString;
+                        }
+                        else if (id < 100)
+                        {
+                            idString = "0" + idString;
+                        }
+
+                        string sqlCheck = @"select * from Customer where ID = @ID";
+                        var commandCheck = new SqlCommand(sqlCheck, Database.Instance.Connection);
+                        commandCheck.Parameters.Add("@ID", System.Data.SqlDbType.Char)
+                            .Value = idString;
+                        var reader = commandCheck.ExecuteReader();
+                        if (!reader.HasRows)
+                        {
+                            isExist = false;
+                        }
+                        reader.Close();
+                    }
+
                     var newCustomer = new Customer()
                     {
+                        ID = idString,
                         FirstName = firstNameTextBox.Text,
                         LastName = lastNameTextBox.Text,
                         Email = emailTextBox.Text,
@@ -118,10 +150,12 @@ namespace MyShop.pages
                     string passwordHash = Encryption.Encrypt(newCustomer.Password, "1234567890123456");
 
                     // add to database
-                    string sql = @"insert into Customer(firstName, lastName, gender, email, address, phone, age, password) 
-                                values(@FirstName, @LastName, @Gender, @Email,
+                    string sql = @"insert into Customer(id, firstName, lastName, gender, email, address, phone, age, password) 
+                                values(@ID, @FirstName, @LastName, @Gender, @Email,
                                 @Address, @Phone, @Age, @Password)";
                     var command = new SqlCommand(sql, Database.Instance.Connection);
+                    command.Parameters.Add("@ID", System.Data.SqlDbType.Char)
+                        .Value = idString;
                     command.Parameters.Add("@FirstName", System.Data.SqlDbType.Text)
                         .Value = firstName;
                     command.Parameters.Add("@LastName", System.Data.SqlDbType.Text)
