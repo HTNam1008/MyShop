@@ -47,10 +47,11 @@ namespace MyShop
                     _connection = new SqlConnection(ConnectionString); ;
                     _connection.Open();
                 }
-                if (_connection.State != ConnectionState.Open)
+                /*if (_connection.State != ConnectionState.Open)
                 {
+                    _connection = new SqlConnection(ConnectionString); ;
                     _connection.Open();
-                }
+                }*/
                 return _connection;
             }
         }
@@ -69,19 +70,17 @@ namespace MyShop
 
         public string tableName = "ImportExcel";
         public string Name { get; set; }
-        public void ImportDataToSQL()
+        public bool tableExist { get; set; }
+        public async Task ImportDataToSQLAsync()
         {
             try
             {
                 // Mở kết nối đến SQL Server
                 using (SqlConnection connection = new SqlConnection(this.ConnectionString))
                 {
-                    connection.Open();
-
-                    if (TableExists(this.tableName) != true)
+                    tableExist = await TableExistsAsync();
+                    if (tableExist)
                     {
-                       
-
                         // Mở hộp thoại chọn file Excel
                         OpenFileDialog openFileDialog = new OpenFileDialog
                         {
@@ -130,10 +129,15 @@ namespace MyShop
 
                                     // Import dữ liệu vào cơ sở dữ liệu
                                     ImportData(connection, this.tableName, dataTable);
+                                    
                                 }
                             }
                         }
                         MessageBox.Show("Data imported successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    else
+                    {
+                        return;
                     }
                 }
             }
@@ -145,20 +149,29 @@ namespace MyShop
 
         }
 
-        private bool TableExists(string tableName)
+        public async Task<bool> TableExistsAsync()
         {
             bool result = false;
-
             try
             {
-                using (SqlCommand command = new SqlCommand($"IF OBJECT_ID('{tableName}', 'U') IS NOT NULL SELECT 1 ELSE SELECT 0", Connection))
+                using (SqlCommand command = new SqlCommand($"IF OBJECT_ID('{this.tableName}', 'U') IS NOT NULL SELECT 1 ELSE SELECT 0", Connection))
                 {
-                    result = (int)command.ExecuteScalar() == 1;
+                    await Connection.OpenAsync(); // Mở kết nối cơ sở dữ liệu không đồng bộ
+                    command.Connection = Connection;
+                    object queryResult = await command.ExecuteScalarAsync(); // Thực thi truy vấn không đồng bộ
+                    result = (int)queryResult == 1;
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error checking table existence: {ex.Message}");
+            }
+            finally
+            {
+                if (Connection.State == ConnectionState.Open)
+                {
+                    Connection.Close();
+                }
             }
 
             return result;

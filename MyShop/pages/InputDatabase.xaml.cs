@@ -116,7 +116,6 @@ namespace MyShop.pages
                 Window window = new SignIn();
                 window.Show();
                 this.Close();
-                connection.Close();
             }
             else
             {
