@@ -44,7 +44,7 @@ namespace MyShop.pages
             loadingBar.IsIndeterminate = true;
             
             var builder = new SqlConnectionStringBuilder();
-            builder.DataSource = server.Name;
+            builder.DataSource = "THINKPAD-THANHN\\SQLEXPRESS";
             builder.InitialCatalog = database;
             builder.IntegratedSecurity = true;
             builder.TrustServerCertificate = true;

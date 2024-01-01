@@ -41,7 +41,7 @@ namespace MyShop.pages
 
             // Data Source=DESKTOP-MQMBQC9;Initial Catalog=CustomerDB;Integrated Security=True
             var builder = new SqlConnectionStringBuilder();
-            builder.DataSource = server.Name;
+            builder.DataSource = "THINKPAD-THANHN\\SQLEXPRESS";
             builder.InitialCatalog = "MyShopDB";
             builder.IntegratedSecurity = true;
             builder.UserID = username;

@@ -52,7 +52,7 @@ namespace MyShop.pages
         {
             // connect to SQL Server
             var builder = new SqlConnectionStringBuilder();
-            builder.DataSource = server.Name;
+            builder.DataSource = "THINKPAD-THANHN\\SQLEXPRESS";
             builder.InitialCatalog = "MyShopDB";
             builder.IntegratedSecurity = true;
             builder.TrustServerCertificate = true;
