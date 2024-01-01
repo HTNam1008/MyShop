@@ -32,15 +32,16 @@ namespace MyShop.pages
         }
         private void PageOpened(object sender, RoutedEventArgs e)
         {
-            Database.Instance.ImportDataToSQL();
+            Database.Instance.ImportDataToSQLAsync();
             LoadDataIntoDataGrid();
         }
         private void LoadDataIntoDataGrid()
         {
-            var sql = $"SELECT name, os, price, manufacturer, memorystorage, image FROM {Database.Instance.tableName}";
+            var sql = $"SELECT Name, OS, Price, Manufacturer, MemoryStorage, Image FROM {Database.Instance.tableName}";
             var command = new SqlCommand(sql, Database.Instance.Connection);
-
+            if (Database.Instance.Connection != null ) { Database.Instance.Connection.Close(); }
             SqlDataAdapter adapter = new SqlDataAdapter(command);
+
             adapter.Fill(MobileData);
             nameOS = MobileData.AsEnumerable().Select(row => row.Field<string>("os")).Distinct().ToArray();
             comboBox.ItemsSource = nameOS;
@@ -113,13 +114,13 @@ namespace MyShop.pages
                 DataRowView selectedRow = ListPhone.SelectedItem as DataRowView;
                 Phone phone = new Phone
                 {
-                    name = selectedRow["name"].ToString(),
-                    os = selectedRow["os"].ToString(),
-                    image = selectedRow["image"].ToString(),
-                    manufacturer = selectedRow["manufacturer"].ToString(),
-                    memoryStorage = selectedRow["memorystorage"].ToString(),
+                    name = selectedRow["Name"].ToString(),
+                    os = selectedRow["OS"].ToString(),
+                    image = selectedRow["Image"].ToString(),
+                    manufacturer = selectedRow["Manufacturer"].ToString(),
+                    memoryStorage = selectedRow["MemoryStorage"].ToString(),
                 };
-                if (int.TryParse(selectedRow["price"].ToString(), out int priceValue))
+                if (int.TryParse(selectedRow["Price"].ToString(), out int priceValue))
                 {
                     phone.price = priceValue;
                 }
@@ -128,7 +129,6 @@ namespace MyShop.pages
                     phone.price = 0;
                 }
                 SetDetails(phone);
-
             }
 
         }
