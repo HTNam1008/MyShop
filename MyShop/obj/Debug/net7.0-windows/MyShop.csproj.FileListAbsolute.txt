@@ -94,3 +94,11 @@ D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-wi
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\MyShop.pdb
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\MyShop.genruntimeconfig.cache
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\ref\MyShop.dll
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\bin\Debug\net7.0-windows\ExcelDataReader.dll
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\bin\Debug\net7.0-windows\ExcelDataReader.DataSet.dll
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\bin\Debug\net7.0-windows\System.Data.SqlClient.dll
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\bin\Debug\net7.0-windows\runtimes\win-arm64\native\sni.dll
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\bin\Debug\net7.0-windows\runtimes\win-x64\native\sni.dll
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\bin\Debug\net7.0-windows\runtimes\win-x86\native\sni.dll
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\bin\Debug\net7.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\bin\Debug\net7.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll

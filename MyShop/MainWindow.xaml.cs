@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,8 +24,9 @@ namespace MyShop
         public MainWindow()
         {
             InitializeComponent();
+            fContainer.Navigate(new System.Uri("pages/Home.xaml", UriKind.RelativeOrAbsolute));
         }
-
+   
 
         private void btnStatistic_Click(object sender, RoutedEventArgs e)
         {
@@ -210,7 +212,6 @@ namespace MyShop
         private void txtExit_MouseDown(object sender, MouseButtonEventArgs e)
         {
             btnExit_Click(sender, e);
-
         }
     }
 }
