@@ -53,7 +53,7 @@ namespace MyShop.pages {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MyShop;component/pages/setting.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MyShop;V1.0.0.0;component/pages/setting.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\pages\Setting.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

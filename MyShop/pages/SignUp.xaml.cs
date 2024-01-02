@@ -53,7 +53,7 @@ namespace MyShop.pages
             // connect to SQL Server
             var builder = new SqlConnectionStringBuilder();
             builder.DataSource = server.Name;
-            builder.InitialCatalog = "MyShopDB";
+            builder.InitialCatalog = Database.Instance.Name;
             builder.IntegratedSecurity = true;
             builder.TrustServerCertificate = true;
 

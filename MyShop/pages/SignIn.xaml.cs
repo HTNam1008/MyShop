@@ -39,10 +39,9 @@ namespace MyShop.pages
             string username = txtUsername.Text;
             string password = passwordBox.Password;
 
-            // Data Source=DESKTOP-MQMBQC9;Initial Catalog=CustomerDB;Integrated Security=True
             var builder = new SqlConnectionStringBuilder();
-            builder.DataSource = server.Name;
-            builder.InitialCatalog = "MyShopDB";
+            builder.DataSource = Server.Instance.Name;
+            builder.InitialCatalog = Database.Instance.Name;
             builder.IntegratedSecurity = true;
             builder.UserID = username;
             builder.Password = password;
@@ -129,7 +128,7 @@ namespace MyShop.pages
                     {
                         /*MessageBox.Show("Successfully signed in");*/
                         MessageBox.Show("Successfully signed in!", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
-                        Window window = new InputDatabase();
+                        Window window = new MainWindow();
                         window.Show();
                         this.Close();
                     }

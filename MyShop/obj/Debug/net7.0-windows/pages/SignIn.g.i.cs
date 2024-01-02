@@ -125,7 +125,7 @@ namespace MyShop.pages {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MyShop;component/pages/signin.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MyShop;V1.0.0.0;component/pages/signin.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\pages\SignIn.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

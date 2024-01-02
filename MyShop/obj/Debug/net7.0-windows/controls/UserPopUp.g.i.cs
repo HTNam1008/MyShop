@@ -69,7 +69,7 @@ namespace MyShop.controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MyShop;component/controls/userpopup.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MyShop;V1.0.0.0;component/controls/userpopup.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\controls\UserPopUp.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

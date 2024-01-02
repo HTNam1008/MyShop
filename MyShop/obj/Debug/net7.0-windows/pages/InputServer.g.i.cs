@@ -93,7 +93,7 @@ namespace MyShop.pages {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MyShop;component/pages/inputserver.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MyShop;V1.0.0.0;component/pages/inputserver.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\pages\InputServer.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -46,9 +46,10 @@ namespace MyShop.pages
         {
             if(!string.IsNullOrEmpty(txtServer.Text) && txtServer.Text.Length > 0)
             {
-                Server server = new Server(txtServer.Text);
-                MessageBox.Show($"Successfully connected to server {server.Name}!", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
-                Window window = new SignIn();
+                //Server server = new Server(txtServer.Text);
+                Server.Instance.Name= txtServer.Text;
+                MessageBox.Show($"Successfully connected to server {Server.Instance.Name}!", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
+                Window window = new InputDatabase();
                 window.Show();
                 this.Close();
             }

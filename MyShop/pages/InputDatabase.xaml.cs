@@ -71,17 +71,6 @@ namespace MyShop.pages
                         {
                             try
                             {
-                                // Create database
-                                /*string createDatabase = "CREATE DATABASE " + database;
-                                SqlCommand command = new SqlCommand(createDatabase, _connection);
-                                command.ExecuteNonQuery();
-
-                                MessageBox.Show($"Database {database} has been created successfully.", "!!!", MessageBoxButton.OK, MessageBoxImage.Information);
-
-                                // Mở kết nối mới đến cơ sở dữ liệu đã tạo mới
-                                _connection.Close();
-                                _connection.ConnectionString = builder.ConnectionString;
-                                _connection.Open();*/
 
                                 string connectionStr = "Data Source=.;Integrated Security=True;TrustServerCertificate = true;";
                                 SqlConnection connection1 = new SqlConnection(connectionStr);
@@ -123,7 +112,8 @@ namespace MyShop.pages
             if(connection != null)
             {
                 MessageBox.Show($"Connected to database {database} successfully.", "!!!", MessageBoxButton.OK, MessageBoxImage.Information);
-                Window window = new MainWindow();
+                Database.Instance.Name = database;
+                Window window = new SignIn();
                 window.Show();
                 this.Close();
             }
