@@ -101,7 +101,7 @@ namespace MyShop.pages
                             idString = "0" + idString;
                         }
 
-                        string sqlCheck = @"select * from Customer where ID = @ID";
+                        string sqlCheck = @"select * from Admin where ID = @ID";
                         var commandCheck = new SqlCommand(sqlCheck, Database.Instance.Connection);
                         commandCheck.Parameters.Add("@ID", System.Data.SqlDbType.Char)
                             .Value = idString;
@@ -113,7 +113,7 @@ namespace MyShop.pages
                         reader.Close();
                     }
 
-                    var newCustomer = new Customer()
+                    var newAdmin = new Admin()
                     {
                         ID = idString,
                         FirstName = firstNameTextBox.Text,
@@ -125,14 +125,14 @@ namespace MyShop.pages
                         Age = int.Parse(ageTextBox.Text),
                         Password = passwordTextBox.Text,
                     };
-                    string firstName = newCustomer.FirstName;
-                    string lastName = newCustomer.LastName;
-                    string email = newCustomer.Email;
-                    string address = newCustomer.Address;
-                    string phone = newCustomer.Phone;
-                    int age = newCustomer.Age;
-                    string genderCustomer = newCustomer.Gender;
-                    string password = newCustomer.Password;
+                    string firstName = newAdmin.FirstName;
+                    string lastName = newAdmin.LastName;
+                    string email = newAdmin.Email;
+                    string address = newAdmin.Address;
+                    string phone = newAdmin.Phone;
+                    int age = newAdmin.Age;
+                    string genderCustomer = newAdmin.Gender;
+                    string password = newAdmin.Password;
 
 /*                    var passwordInBytes = Encoding.UTF8.GetBytes(password);
                     var entropy = new byte[20];
@@ -147,10 +147,10 @@ namespace MyShop.pages
 
                     string passwordHash = passwordIn64.ToString() + "@@@@" + entropyIn64.ToString();*/
 
-                    string passwordHash = Encryption.Encrypt(newCustomer.Password, "1234567890123456");
+                    string passwordHash = Encryption.Encrypt(newAdmin.Password, "1234567890123456");
 
                     // add to database
-                    string sql = @"insert into Customer(id, firstName, lastName, gender, email, address, phone, age, password) 
+                    string sql = @"insert into Admin(id, firstName, lastName, gender, email, address, phone, age, password) 
                                 values(@ID, @FirstName, @LastName, @Gender, @Email,
                                 @Address, @Phone, @Age, @Password)";
                     var command = new SqlCommand(sql, Database.Instance.Connection);

@@ -98,7 +98,7 @@ namespace MyShop.pages
 
                 Database.Instance.ConnectionString = connectionString;
 
-                var sql = "SELECT * FROM CUSTOMER WHERE Email = @username";
+                var sql = "SELECT * FROM Admin WHERE Email = @username";
                 var command = new SqlCommand(sql, Database.Instance.Connection);
                 command.Parameters.Add("@Username", System.Data.SqlDbType.Char)
                     .Value = username;
