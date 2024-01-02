@@ -48,7 +48,7 @@ namespace MyShop.pages
             {
                 //Server server = new Server(txtServer.Text);
                 Server.Instance.Name= txtServer.Text;
-                MessageBox.Show($"Successfully connected to server {Server.Instance.Name}!", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show($"Get server {Server.Instance.Name}!", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
                 Window window = new InputDatabase();
                 window.Show();
                 this.Close();
