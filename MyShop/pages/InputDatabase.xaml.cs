@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -113,6 +114,13 @@ namespace MyShop.pages
             {
                 MessageBox.Show($"Connected to database {database} successfully.", "!!!", MessageBoxButton.OK, MessageBoxImage.Information);
                 Database.Instance.Name = database;
+
+                string databaseStr = database;
+                var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                config.AppSettings.Settings["Database"].Value = databaseStr;
+                config.Save(ConfigurationSaveMode.Minimal);
+                ConfigurationManager.RefreshSection("appSettings");
+
                 Window window = new SignIn();
                 window.Show();
                 this.Close();
@@ -151,12 +159,19 @@ namespace MyShop.pages
                 closeImage = "res/asset/close.png",
                 dbImage = "res/asset/database.png",
             };
+
+            var database = ConfigurationManager.AppSettings["Database"];
+
+            if (database.Length != 0)
+            {
+                txtDatabase.Text = database;
+            }
             this.DataContext = sourceImage;
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
-            Window window = new SignIn();
+            Window window = new InputServer();
             window.Show();
             this.Close();
         }

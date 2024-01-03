@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,6 +50,13 @@ namespace MyShop.pages
                 //Server server = new Server(txtServer.Text);
                 Server.Instance.Name= txtServer.Text;
                 MessageBox.Show($"Get server {Server.Instance.Name}!", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                string server = txtServer.Text;
+                var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                config.AppSettings.Settings["server"].Value = server;
+                config.Save(ConfigurationSaveMode.Minimal);
+                ConfigurationManager.RefreshSection("appSettings");
+
                 Window window = new InputDatabase();
                 window.Show();
                 this.Close();
@@ -73,6 +81,15 @@ namespace MyShop.pages
                 closeImage = "res/asset/close.png",
                 dbImage = "res/asset/server.png",
             };
+
+            var server = ConfigurationManager.AppSettings["server"];
+
+            if (server.Length != 0)
+            {
+                txtServer.Text = server;
+            }
+
+
             this.DataContext = sourceImage;
         }
     }
