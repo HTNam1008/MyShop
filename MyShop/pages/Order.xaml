@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:MyShop.pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Order">
+      Title="Order" Unloaded="Page_Unloaded">
 
     <Page.Resources>
         <ResourceDictionary>

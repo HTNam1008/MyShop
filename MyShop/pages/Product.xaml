@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MyShop.pages"
       mc:Ignorable="d" d:DesignWidth="800"
-      Title="Product" Loaded="PageOpened" Height="633">
+      Title="Product" Loaded="PageOpened" Height="633" Unloaded="Page_Unloaded">
     <Page.Resources>
         <ResourceDictionary>
             <FontFamily x:Key="test" >/res/font/#SVN-Transformer</FontFamily>

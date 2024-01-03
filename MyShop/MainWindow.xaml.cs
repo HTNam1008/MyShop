@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +25,21 @@ namespace MyShop
         public MainWindow()
         {
             InitializeComponent();
+            
+            string lastClosedPage = ConfigurationManager.AppSettings["LastClosedPage"];
+
+            if(!string.IsNullOrEmpty(lastClosedPage))
+            {
+                SwitchToPage(lastClosedPage);
+                return;
+            }
+
             fContainer.Navigate(new System.Uri("pages/Home.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        private void SwitchToPage(string pagePath)
+        {
+            fContainer.Navigate(new System.Uri(pagePath, UriKind.Relative));
         }
    
 

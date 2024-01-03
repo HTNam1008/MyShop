@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,16 @@ namespace MyShop.pages
         public Product()
         {
             InitializeComponent();
+            Unloaded += Page_Unloaded;
+        }
+
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.AppSettings.Settings["LastClosedPage"].Value = "pages/Product.xaml";
+            config.Save(ConfigurationSaveMode.Minimal);
+
+            ConfigurationManager.RefreshSection("appSettings");
         }
         private void PageOpened(object sender, RoutedEventArgs e)
         {
@@ -152,6 +163,5 @@ namespace MyShop.pages
                 comboPage.SelectedIndex++;
             }
         }
-
     }
 }
