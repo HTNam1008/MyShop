@@ -8,6 +8,12 @@
     <Compile Update="controls\MyTextBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="pages\AddWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="pages\EditWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="pages\InputDatabase.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -26,6 +32,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="controls\MyTextBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="pages\AddWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="pages\EditWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="pages\InputDatabase.xaml">

@@ -9,6 +9,8 @@ namespace MyShop.pages
     public class Phone
     {
         public string name { get; set; }
+        public int id { get; set; }
+
         public string os {get; set; }
 
         public string image { get; set; }

@@ -35,7 +35,7 @@ namespace MyShop
 
         private void btnProduct_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("pages/Product.xaml", UriKind.RelativeOrAbsolute));
+            fContainer.Navigate(new System.Uri("pages/Product.xaml", UriKind.Relative));
         }
 
         private void btnHome_Click(object sender, RoutedEventArgs e)
@@ -73,7 +73,6 @@ namespace MyShop
                 Popup.IsOpen = true;
                 Header.PopupText.Text = "Home";
             }
-            
         }
 
         private void btnHome_MouseLeave(object sender, MouseEventArgs e)

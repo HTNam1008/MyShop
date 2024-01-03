@@ -56,7 +56,7 @@
     <Grid Background="WhiteSmoke">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition MinWidth="700"  Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <Grid x:Name="nav" Grid.Column="0" Width="100" HorizontalAlignment="Left">
@@ -246,13 +246,14 @@
 
         <Grid Grid.Column="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition MinWidth="400" Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="300"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
             <Frame Grid.Column="0"
                 Name="fContainer"
                 Margin="20"
+                
                 NavigationUIVisibility="Hidden">
             </Frame>
 

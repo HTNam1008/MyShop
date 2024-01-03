@@ -4,69 +4,136 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MyShop.pages"
-      mc:Ignorable="d" d:DesignWidth="800"
-      Title="Product" Loaded="PageOpened" Height="633">
+      mc:Ignorable="d" d:DesignWidth="800" 
+      Title="Product" Loaded="PageOpened" Height="Auto" d:Height="800">
     <Page.Resources>
         <ResourceDictionary>
             <FontFamily x:Key="test" >/res/font/#SVN-Transformer</FontFamily>
         </ResourceDictionary>
     </Page.Resources>
 
-
     <Border Background="WhiteSmoke">
-        <StackPanel VerticalAlignment="Top">
-            <TextBlock FontFamily="{StaticResource test}"><Run Text="Hi..."/></TextBlock>
-            <TextBlock FontFamily="{StaticResource test}" FontSize="35"><Run Text="Welcome back -- PRODUCT"/></TextBlock>
-            <Border CornerRadius="20" Width="750" Background="Bisque" Height="250">
-                <DockPanel LastChildFill="True" Background="Bisque">
-                    <Border BorderBrush="Black" BorderThickness="4,4,4,4" DockPanel.Dock="Left" Width="750" Background="Bisque">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="5*"></RowDefinition>
+                <RowDefinition Height="4*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" VerticalAlignment="Top" MinHeight="60" MinWidth="400">
+                <TextBlock FontFamily="{StaticResource test}"><Run Text="Hi..."/></TextBlock>
+                <TextBlock FontFamily="{StaticResource test}" FontSize="35"><Run Text="Welcome back -- PRODUCT"/></TextBlock>
+            </StackPanel>
+
+            <Border Grid.Row="1" CornerRadius="20" Background="Bisque"  MinHeight="200" MinWidth="400">
+                <DockPanel LastChildFill="True" Background="Bisque" >
+                    <Border BorderBrush="Black" BorderThickness="4,4,4,4" DockPanel.Dock="Left" Background="Bisque">
                         <DockPanel Margin="0,0,0,0" >
-                            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-                                <TextBlock Margin="30,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center">Loại Sản phẩm:</TextBlock>
-                                <ComboBox Name="comboBox" SelectionChanged="comboBox_Selected">
+                            <Grid DockPanel.Dock="Top">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                   
+                                  
+                                </Grid.ColumnDefinitions>
+                                <TextBox x:Name="searchTextBox" Grid.Column="0" d:Text="abcde" Margin="10"  FontSize="15" Padding="5,0,5,0" Height="25" TextChanged="SearchTextBox_TextChanged" />
 
-                                </ComboBox>
-                            </StackPanel>
-                            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
-                                <Button Margin="300,0,0,0" Content="Previous" Width="67" Click="btnPrevious_Click"/>
-                                <ComboBox Name="comboPage" SelectionChanged="comboPage_Selected" Width="36">
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="30,0,10,0">
+                                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center">Loại Sản phẩm:</TextBlock>
+                                    <ComboBox Name="comboBox" HorizontalAlignment="Right" VerticalAlignment="Center" SelectionChanged="comboBox_Selected"></ComboBox>
+                                </StackPanel>
+                                <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="30,0,10,0">
+                                    <TextBlock  Margin="10,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center">Khoảng giá:</TextBlock>
+                                    <ComboBox  Name="priceComboBox" HorizontalAlignment="Right" VerticalAlignment="Center" SelectionChanged="priceComboBox_SelectionChanged"></ComboBox>
+                                </StackPanel>
+                                <StackPanel Grid.Column="3" Orientation="Horizontal" Margin="30,0,10,0">
+                                    <Button x:Name="addButton" Margin="10" Content="New Product" Width="Auto" Height="30" HorizontalAlignment="Left" Click="addButton_Click"></Button>
+                                </StackPanel>
+                                    
+                            </Grid>
+                            <Grid DockPanel.Dock="Bottom">
+                                <Grid.RowDefinitions >
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <StackPanel Grid.Row="0" HorizontalAlignment="Center" Orientation="Horizontal">
+                                    <Button  Width="60" Content="Previous"  Click="btnPrevious_Click"/>
+                                    <ComboBox Name="comboPage" HorizontalAlignment="Center" SelectionChanged="comboPage_SelectionChanged"  Width="60">
+                                    </ComboBox>
+                                    <Button HorizontalAlignment="Center" Content="Next" Width="60" Click="btnNext_Click"/>
+                                </StackPanel>
+                            </Grid>
 
-                                </ComboBox>
-                                <Button Content="Next" Width="60" Click="btnNext_Click"/>
-                            </StackPanel>
-                            <DataGrid Name="ListPhone" FontSize="15px" SelectionChanged="DataGrid_SelectionChanged" CanUserAddRows="False">
 
+                            <DataGrid Name="ListPhone" FontSize="15px" SelectionChanged="DataGrid_SelectionChanged" IsReadOnly="True" CanUserAddRows="False" AutoGenerateColumns="False">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Width="Auto" Header="ID" Binding="{Binding ID}" />
+                                    <DataGridTextColumn Width="4*" Header="Name" Binding="{Binding Name}" />
+                                    <DataGridTextColumn Width="3*" Header="Operating System" Binding="{Binding OS}" />
+                                    <DataGridTextColumn Width="2*" Header="Price" Binding="{Binding Price}" />
+                                    <DataGridTextColumn Width="2*" Header="Manufacturer" Binding="{Binding Manufacturer}" />
+                                    <DataGridTextColumn Width="3*" Header="Memory Storage" Binding="{Binding MemoryStorage}" />
+                                    <!-- Thêm các cột khác tương tự cho các trường dữ liệu khác trong DataTable -->
+                                    <DataGridTemplateColumn Width="Auto">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button Width="60" Content="Edit" Click="EditButton_Click"/>
+                                                    <Button Width="60" Content="Delete" Click="DeleteButton_Click"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
                             </DataGrid>
                         </DockPanel>
                     </Border>
                 </DockPanel>
             </Border>
-            <Grid Margin="10" Height="300">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5*"/>
-                    <ColumnDefinition Width="11*"/>
-                </Grid.ColumnDefinitions>
-                <Border CornerRadius="20" Width="281" Background="Bisque" HorizontalAlignment="Left" Grid.ColumnSpan="2">
-                    <Border BorderBrush="Black" BorderThickness="5" Width="281">
-                        <Image Source="{Binding image}" Stretch="UniformToFill"/>
 
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" Padding="10,10,10,10"  Background="Bisque" HorizontalAlignment="Stretch">
+                    <Border BorderBrush="Black" BorderThickness="5"  MinHeight="60" MinWidth="60">
+                        <Image Source="{Binding image}" Stretch="Uniform" />
                     </Border>
                 </Border>
-                <Border CornerRadius="20" Width="478" Background="Bisque" HorizontalAlignment="Right" Grid.Column="1" Margin="0,0,-14,0">
-                    <Canvas>
-                        <TextBlock Canvas.Left="27" Canvas.Top="10"><Run Text="Tên sản phẩm:"/></TextBlock>
-                        <TextBlock Text="{Binding name}" Canvas.Left="108" Canvas.Top="10" Height="16" Width="170" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <TextBlock Canvas.Left="27" Canvas.Top="50"><Run Text="Giá:"/></TextBlock>
-                        <TextBlock Text="{Binding price}" Height="16" Width="108" Canvas.Left="52" Canvas.Top="50" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <TextBlock Canvas.Left="27" Canvas.Top="90" HorizontalAlignment="Center" VerticalAlignment="Top"><Run Text="Hệ điều hành:"/></TextBlock>
-                        <TextBlock Text="{Binding os}"  Height="16" Width="108" Canvas.Left="105" Canvas.Top="90" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <TextBlock Canvas.Left="27" Canvas.Top="130" HorizontalAlignment="Center" VerticalAlignment="Top"><Run Text="Bộ nhớ:"/></TextBlock>
-                        <TextBlock Text="{Binding memoryStorage}"  Height="16" Width="108" Canvas.Left="105" Canvas.Top="130" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        <TextBlock Canvas.Left="27" Canvas.Top="170" HorizontalAlignment="Center" VerticalAlignment="Top"><Run Text="Nhà sản xuất:"/></TextBlock>
-                        <TextBlock Text="{Binding manufacturer}"  Height="16" Width="108" Canvas.Left="105" Canvas.Top="170" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    </Canvas>
+
+                <!-- Cột 2 -->
+                <Border Grid.Column="1" Background="Bisque" HorizontalAlignment="Stretch" Margin="0,0,-14,0">
+                    <StackPanel Margin="10" Orientation="Vertical"  MinHeight="60" MinWidth="100">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="20" HorizontalAlignment="Left"><Run Text="Tên sản phẩm:  "/></TextBlock>
+                            <TextBlock FontSize="20" Text="{Binding name}" Height="30"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="20" HorizontalAlignment="Stretch"><Run Text="Giá:  "/></TextBlock>
+                            <TextBlock FontSize="20" Text="{Binding price}" Height="30" HorizontalAlignment="Stretch"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="20" HorizontalAlignment="Stretch"><Run Text="Hệ điều hành:  "/></TextBlock>
+                            <TextBlock FontSize="20" Text="{Binding os}" Height="30" HorizontalAlignment="Stretch"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="20" HorizontalAlignment="Stretch"><Run Text="Bộ nhớ:  "/></TextBlock>
+                            <TextBlock FontSize="20" Text="{Binding memoryStorage}" Height="30" HorizontalAlignment="Stretch"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="20" HorizontalAlignment="Stretch"><Run Text="Nhà sản xuất:  "/></TextBlock>
+                            <TextBlock FontSize="20" Text="{Binding manufacturer}" Height="30" HorizontalAlignment="Stretch"/>
+                        </StackPanel>
+                       
+                    </StackPanel>
+                   
+                    
                 </Border>
+
             </Grid>
-        </StackPanel>
+        </Grid>
     </Border>
 </Page>

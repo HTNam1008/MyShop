@@ -44,7 +44,7 @@
     </Resource>
     <Resource Include="res\icon\close.png" />
     <Resource Include="res\icon\exit.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="res\icon\home.png" />
     <Resource Include="res\icon\line_chart.png">
@@ -135,6 +135,9 @@
     </None>
     <None Update="res\ava\ava_9.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="res\icon\error.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
