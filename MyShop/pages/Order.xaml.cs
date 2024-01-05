@@ -1,9 +1,14 @@
 ﻿using Microsoft.Data.SqlClient;
+using MyShop.BUS;
+using MyShop.DAO;
+using MyShop.DTO;
 using System;
+using System.Configuration;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Printing;
 using System.Text;
@@ -26,8 +31,11 @@ namespace MyShop.pages
     /// </summary>
     public partial class Order : Page
     {
-        BindingList<CustomerOrder> _OrderList = new BindingList<CustomerOrder>();
-        BindingList<OrderDetail> _OrderDetail = new BindingList<OrderDetail>();
+        private readonly OrderDetailBUS _odBUS;
+        private readonly CustomerOrderBUS _customerBUS;
+        private readonly CustomerBUS _cusBUS;
+        BindingList<CustomerOrderDTO> _OrderList = new BindingList<CustomerOrderDTO>();
+        BindingList<OrderDetailDTO> _OrderDetail = new BindingList<OrderDetailDTO>();
         int _orderPerPage = 5;
         int _totalOrders = -1;
         int _totalOrderItems = -1;
@@ -43,41 +51,26 @@ namespace MyShop.pages
         public Order()
         {
             InitializeComponent();
+            _odBUS = new OrderDetailBUS();
+            _customerBUS = new CustomerOrderBUS();
+                _cusBUS = new CustomerBUS();
+
+            Unloaded += Page_Unloaded;
         }
 
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.AppSettings.Settings["LastClosedPage"].Value = "pages/Order.xaml";
+            config.Save(ConfigurationSaveMode.Minimal);
+
+            ConfigurationManager.RefreshSection("appSettings");
+        }
 
         private void getDataFromDatabase()
         {
-            _dataReader?.Close();
-            string sql = @"select *, count(*) over() as Total from CUSTOMERORDER" + @" Order by OrderID offset @Skip rows fetch next @Take rows only";
-
-            _OrderList.Clear();
-
-            if (Database.Instance.Connection.State == ConnectionState.Closed)
-            {
-                Database.Instance.Connection.Open();
-            }
-            using (SqlCommand command = new SqlCommand(sql, Database.Instance.Connection))
-            {
-                command.Parameters.Add("@Skip", SqlDbType.Int).Value = (_currentOrderPage - 1) * _orderPerPage;
-                command.Parameters.Add("@Take", SqlDbType.Int).Value = _orderPerPage;
-
-                // Mở DataReader và thực hiện truy vấn
-                _dataReader = command.ExecuteReader();
-
-                // Xử lý dữ liệu từ _dataReader ở đây
-            }
-
-            while (_dataReader.Read())
-            {
-                CustomerOrder order = readOrderFromDatabase(_dataReader);
-                _OrderList.Add(order);
-
-                _totalOrderCount = (int)_dataReader["Total"];
-            }
-
-            _dataReader.Close();
-
+            _OrderList = _customerBUS.GetAll();
+            _totalOrderCount = _OrderList.Count;
             if (_totalOrderCount != _totalOrderItems)
             {
                 _totalOrderItems = _totalOrderCount;
@@ -93,13 +86,16 @@ namespace MyShop.pages
                 CurOrderPage.Text = "1";
                 TotalOrderPage.Text = "1";
             }
-
+            if (_dataReader != null && !_dataReader.IsClosed)
+            {
+                _dataReader.Close();
+            }
             OrderList.ItemsSource = _OrderList;
         }
 
-        private CustomerOrder readOrderFromDatabase(SqlDataReader dataReader)
+        private CustomerOrderDTO readOrderFromDatabase(SqlDataReader dataReader)
         {
-            CustomerOrder order = new CustomerOrder()
+            CustomerOrderDTO order = new CustomerOrderDTO()
             {
                 OrderId = (int)dataReader["OrderID"],
                 PhoneNum = (string)dataReader["PhoneNum"],
@@ -119,67 +115,31 @@ namespace MyShop.pages
             getDataFromDatabase();
         }
 
-        private CustomerClass GetCustomerClass(string phoneNum)
+        private CustomerDTO GetCustomerClass(string phoneNum)
         {
             try
             {
-                string sql = $"select * from CUSTOMERClass where phoneNum = '{phoneNum}'";
-                SqlCommand command = new SqlCommand(sql, Database.Instance.Connection);
-                _dataReader = command.ExecuteReader();
 
-                if (!_dataReader.Read())
-                {
-                    MessageBox.Show("Cannot find customer");
-                    throw (new Exception("Cannot find customer"));
-                }    
 
-                CustomerClass customerClass = new CustomerClass()
-                {
-                    PhoneNum = (string)_dataReader["phoneNum"],
-                    Name = (string)_dataReader["Name"], 
-                    Address = (string)_dataReader["Address"],
-                    Email = (string)_dataReader["Email"]
-                };
-
-                _dataReader.Close();
+                CustomerDTO customerClass = _cusBUS.getCusByPhone(phoneNum);
+                
 
                 return customerClass;
             } catch (Exception e)
             {
-                _dataReader.Close();
-
                 MessageBox.Show(e.ToString());
             }
 
-            return new CustomerClass();
+            return new CustomerDTO();
         }
 
         private void getOrderDetail(int id)
         {
-            string sql = $"select *, count(*) over() as TotalCount  from ORDERDETAIL where OrderId = {id} Order by phonename offset @Skip rows fetch next @Take rows only";
             
-            SqlCommand command = new SqlCommand(sql, Database.Instance.Connection);
-            command.Parameters.Add("@Skip", SqlDbType.Int).Value = (_currentDetailOrderPage - 1) * _orderDetailPerPage;
-            command.Parameters.Add("@Take", SqlDbType.Int).Value = _orderDetailPerPage;
             try
             {
-                _dataReader = command.ExecuteReader();
-
-
-                _OrderDetail.Clear();
-
-                while (_dataReader.Read())
-                {
-                    OrderDetail phone = new OrderDetail()
-                    {
-                        phone = (string)_dataReader["PhoneName"],
-                        image = (string)_dataReader["image"],
-                        total = (Int32)_dataReader["total"],
-                        amount = (Int32)_dataReader["amount"]
-                    };
-                    _totalDetailOrderCount = (int)_dataReader["TotalCount"];
-                    _OrderDetail.Add(phone);
-                }
+                _OrderDetail = _odBUS.GetByOrderID(id);
+                _totalDetailOrderCount = _OrderDetail.Count;
                 if (_totalDetailOrderCount != _totalDetailOrderItems)
                 {
                     _totalDetailOrderItems = _totalDetailOrderCount;
@@ -196,10 +156,8 @@ namespace MyShop.pages
                     TotalOrderDetailPage.Text = "1";
                 }
 
-                _dataReader.Close();
             } catch (Exception e) {
                 MessageBox.Show(e.ToString());
-                _dataReader.Close();
             }
 
             OrderDetailList.ItemsSource = _OrderDetail;
@@ -207,10 +165,7 @@ namespace MyShop.pages
 
         private void OrderList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (!_dataReader.IsClosed)
-            {
-                _dataReader.Close();
-            }    
+
 
             int selectedIndex = OrderList.SelectedIndex;
 
@@ -239,7 +194,7 @@ namespace MyShop.pages
             _currentDetailOrderPage = 1;
             getOrderDetail(_OrderList[selectedIndex].OrderId);
 
-            CustomerClass customer = GetCustomerClass(_OrderList[selectedIndex].PhoneNum);
+            CustomerDTO customer = GetCustomerClass(_OrderList[selectedIndex].PhoneNum);
 
             IdField.Text = _OrderList[selectedIndex].OrderId.ToString();
 
@@ -289,27 +244,8 @@ namespace MyShop.pages
             {
                 int id = int.Parse(TxtSearch.Text);
 
-                string sql = @"select *, count(*) over() as Total from CUSTOMERORDER where OrderId = @id" + @" Order by OrderID offset @Skip rows fetch next @Take rows only";
-
-                _OrderList.Clear();
-
-                _currentOrderPage = 1;
-
-                SqlCommand command = new SqlCommand(sql, Database.Instance.Connection);
-                command.Parameters.Add("@id", SqlDbType.Int).Value = id;
-                command.Parameters.Add("@Skip", SqlDbType.Int).Value = (_currentOrderPage - 1) * _orderPerPage;
-                command.Parameters.Add("@Take", SqlDbType.Int).Value = _orderPerPage;
-                _dataReader = command.ExecuteReader();
-
-                while (_dataReader.Read())
-                {
-                    CustomerOrder order = readOrderFromDatabase(_dataReader);
-                    _OrderList.Add(order);
-
-                    _totalOrderCount = (int)_dataReader["Total"];
-                }
-
-                _dataReader.Close();
+                _OrderList = _customerBUS.getByOrderID(id);
+                _totalOrderCount = _OrderList.Count;
 
                 if (_totalOrderCount != _totalOrderItems)
                 {
@@ -320,7 +256,10 @@ namespace MyShop.pages
 
                 CurOrderPage.Text = _currentOrderPage.ToString();
                 TotalOrderPage.Text = _totalOrders.ToString();
-
+                if (_dataReader != null && !_dataReader.IsClosed)
+                {
+                    _dataReader.Close();
+                }
                 OrderList.ItemsSource = _OrderList;
             } catch (Exception ex)
             {
@@ -450,11 +389,8 @@ namespace MyShop.pages
                     return;
                 }
 
-                string sql = $"delete from OrderDetail where OrderId = {index}";
 
-                SqlCommand command = new SqlCommand(sql, Database.Instance.Connection);
-
-                int recordChanged = command.ExecuteNonQuery();
+                int recordChanged = _odBUS.DeleteOrder(index);
 
                 if (recordChanged < 1)
                 {
@@ -463,11 +399,9 @@ namespace MyShop.pages
                     return;
                 }
 
-                sql = $"delete from CustomerOrder where OrderId = {index}";
 
-                command = new SqlCommand(sql, Database.Instance.Connection);
 
-                recordChanged = command.ExecuteNonQuery();
+                recordChanged = _customerBUS.deleteCustomerOrder(index);
 
                 if (recordChanged < 1)
                 {

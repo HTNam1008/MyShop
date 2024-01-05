@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MyShop.pages" xmlns:myshop="clr-namespace:MyShop"
       mc:Ignorable="d" d:DesignWidth="800"
-      Title="Order" Loaded="Page_Loaded" Height="585">
+      Title="Order" Loaded="Page_Loaded" Height="585" Unloaded="Page_Unloaded">
 
     <Page.Resources>
         <ResourceDictionary>

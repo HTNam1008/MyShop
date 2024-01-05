@@ -14,6 +14,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MyShop.BUS;
+using MyShop.DAO;
+using MyShop.DTO;
+using MyShop.Helpers;
 
 namespace MyShop.pages
 {
@@ -43,12 +47,10 @@ namespace MyShop.pages
             builder.DataSource = Server.Instance.Name;
             builder.InitialCatalog = Database.Instance.Name;
             builder.IntegratedSecurity = true;
-            builder.UserID = username;
-            builder.Password = password;
             builder.TrustServerCertificate = true;
 
-
             string connectionString = builder.ConnectionString;
+            Database.Instance.ConnectionString = connectionString;
 
             var connection = new SqlConnection(connectionString);
 
@@ -67,9 +69,11 @@ namespace MyShop.pages
                 return _connection;
             });
 
-            if (connection != null && !string.IsNullOrEmpty(txtUsername.Text) && !string.IsNullOrEmpty(passwordBox.Password))
+            AdminBUS adminBUS = new AdminBUS();
+            AdminDTO? adminDTO = adminBUS.GetAdmin(username, password);
+
+            if (adminDTO != null && connection != null)
             {
-                /*MessageBox.Show("Successfully connected to SQL Server");*/
                 if (rememberMe.IsChecked == true)
                 {
                     string passwordIn64 = Encryption.Encrypt(password, "1234567890123456");
@@ -83,54 +87,14 @@ namespace MyShop.pages
 
                     ConfigurationManager.RefreshSection("appSettings");
                 }
-
-                Database.Instance.ConnectionString = connectionString;
-
-                var sql = "SELECT * FROM Admin WHERE Email = @username";
-                var command = new SqlCommand(sql, Database.Instance.Connection);
-                command.Parameters.Add("@Username", System.Data.SqlDbType.Char)
-                    .Value = username;
-                
-
-                var reader = command.ExecuteReader();
-
-                
-                if(reader.Read())
-                {
-                    /*MessageBox.Show("Successfully signed in");*/
-                    string passwordResult = (string)reader["Password"];
-
-                    // unhash password
-
-                    string passwordResultUnhash = Encryption.Decrypt(passwordResult, "1234567890123456");
-
-                    if (passwordResultUnhash == password)
-                    {
-                        /*MessageBox.Show("Successfully signed in");*/
-                        MessageBox.Show("Successfully signed in!", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
-                        Window window = new MainWindow();
-                        window.Show();
-                        this.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Wrong password!", "Fail!", MessageBoxButton.OK, MessageBoxImage.Error);
-                        Window window = new SignIn();
-                        window.Show();
-                        this.Close();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("User is not exist in database! Please sign up!", "Fail!", MessageBoxButton.OK, MessageBoxImage.Error);
-                    Window window = new SignIn();
-                    window.Show();
-                    this.Close();
-                }
+                MessageBox.Show("Successfully signed in!", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
+                Window window = new MainWindow();
+                window.Show();
+                this.Close();
             }
             else
             {
-                MessageBox.Show("Invalid username or password!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Failed to in database! Please sign up!", "Fail!", MessageBoxButton.OK, MessageBoxImage.Error);
                 Window window = new SignIn();
                 window.Show();
                 this.Close();

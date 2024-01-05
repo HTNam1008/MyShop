@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyShop.pages"
         mc:Ignorable="d"
-        Title="Edit" Height="700" Width="800" Loaded="Window_Loaded">
+        Title="Edit" Height="700" Width="800" Loaded="Window_Loaded" Unloaded="Window_Unloaded">
     <Canvas Height="700" VerticalAlignment="Top" HorizontalAlignment="Center" Width="450">
         <TextBlock Text="Edit Phone" FontSize="30" FontWeight="Bold" Canvas.Left="149" Canvas.Top="19"/>
         <TextBlock  Text="Name: " Height="24" Width="48" Canvas.Left="10" Canvas.Top="82" HorizontalAlignment="Left" VerticalAlignment="Top"/>

@@ -1,7 +1,11 @@
 ﻿using Microsoft.Data.SqlClient;
+using MyShop.BUS;
+using MyShop.DAO;
+using MyShop.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -14,6 +18,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MyShop.pages
 {
@@ -23,36 +28,46 @@ namespace MyShop.pages
     public partial class AddWindow : Window
     {
         private int ID;
-        public string Name { get; set; }
-        public string OS { get; set; }
-        public string Manufacturer { get; set; }
-        public string MemoryStorage { get; set; }
-        public int Price { get; set; }
-        public string Image { get; set; }
-        public string Details { get; set; }
-        public int PriceOriginal { get; set; }
-        public int Quantity { get; set; }
+
+        private readonly PhoneBUS phonebus;
+
+        public PhoneDTO phoneDTO;
+ 
         public AddWindow(int Id)
         {
             InitializeComponent();
             ID = Id;
+            phonebus = new PhoneBUS();
+            Unloaded += Window_Unloaded;
         }
 
+        private void Window_Unloaded(object sender, RoutedEventArgs e)
+        {
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.AppSettings.Settings["LastClosedPage"].Value = "pages/AddWindow.xaml";
+            config.Save(ConfigurationSaveMode.Minimal);
+
+            ConfigurationManager.RefreshSection("appSettings");
+        }
 
         private void newButton_Click(object sender, RoutedEventArgs e)
         {
 
-            Name = NamePhone.Text;
-            OS = OSPhone.Text;
-            Manufacturer = ManufacturerPhone.Text;
-            MemoryStorage = MemoryPhone.Text;
-            Price = Convert.ToInt32(PricePhone.Text);
-            Image = ImagePhone.Text;
-            Quantity = Convert.ToInt32(QuantityPhone.Text);
-            PriceOriginal = Convert.ToInt32(PriceOriginalPhone.Text);
-            Details=DetailsPhone.Text;
+            phoneDTO = new PhoneDTO()
+            {
+                id = this.ID,
+                name = NamePhone.Text,
+                os = OSPhone.Text,
+                manufacturer = ManufacturerPhone.Text,
+                memoryStorage = MemoryPhone.Text,
+                price = Convert.ToInt32(PricePhone.Text),
+                image = ImagePhone.Text,
+                quantity = Convert.ToInt32(QuantityPhone.Text),
+                priceOriginal = Convert.ToInt32(PriceOriginalPhone.Text),
+                details = DetailsPhone.Text,
+            };
 
-            string sql = """           
+     /*       string sql = """           
                 insert into ImportExcel(ID,Name,Quantity, OS, Manufacturer,PriceOriginal, Price, MemoryStorage,Image,Details )
                 values (@ID,@Name,@Quantity, @OS, @Manufacturer,@PriceOriginal, @Price,@MemoryStorage,@Image,@Details)
                 select ident_current('ImportExcel')
@@ -81,10 +96,10 @@ namespace MyShop.pages
             command.Parameters.Add("@quantity", System.Data.SqlDbType.Int)
                 .Value = Quantity;
             command.Parameters.Add("@priceOriginal", System.Data.SqlDbType.Int)
-                .Value = PriceOriginal;
-            int count = command.ExecuteNonQuery();
+                .Value = PriceOriginal;*/
+            bool count = phonebus.insertPhone(phoneDTO);
 
-            if (count > 0)
+            if (count)
             {
                 MessageBox.Show($"Insert successfully new phone: {Name}");
                 DialogResult = true;

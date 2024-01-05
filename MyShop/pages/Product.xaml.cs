@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
 using static System.Net.Mime.MediaTypeNames;
+using MyShop.DAO;
+using MyShop.DTO;
+using MyShop.BUS;
 
 namespace MyShop.pages
 {
@@ -25,7 +29,7 @@ namespace MyShop.pages
     /// </summary>
     public partial class Product : Page
     {
-
+        private readonly PhoneBUS _phoneBUS;
 
         public string[] nameOS;
 
@@ -39,7 +43,20 @@ namespace MyShop.pages
         public Product()
         {
             InitializeComponent();
+            _phoneBUS = new PhoneBUS();
+
+            Unloaded += Page_Unloaded;
         }
+
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.AppSettings.Settings["LastClosedPage"].Value = "pages/Product.xaml";
+            config.Save(ConfigurationSaveMode.Minimal);
+
+            ConfigurationManager.RefreshSection("appSettings");
+        }
+
         private async void PageOpened(object sender, RoutedEventArgs e)
         {
             await Database.Instance.ImportDataToSQLAsync();
@@ -47,15 +64,25 @@ namespace MyShop.pages
         }
         private void LoadDataIntoGrid()
         {
-            var sql = $"SELECT ID, Name, OS, Price, PriceOriginal, Quantity, Manufacturer, MemoryStorage, Details, Image FROM {Database.Instance.tableName}";
+            /*var sql = $"SELECT ID, Name, OS, Price, PriceOriginal, Quantity, Manufacturer, MemoryStorage, Details, Image FROM {Database.Instance.tableName}";
             var command = new SqlCommand(sql, Database.Instance.Connection);
-            if (Database.Instance.Connection != null) { Database.Instance.Connection.Close(); }
+            if (Database.Instance.Connection != null) { Database.Instance.Connection.Close(); }*/
 
-            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            /*            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            */
+            try
+            {
+                SqlDataAdapter adapter = _phoneBUS.getAll();
+                adapter.Fill(MobileData);
+                SetPageComboBox();
+                SetPriceRangeComboBox();
+            }
+            catch (Exception ex)
+            {
+                // Xử lý lỗi ở đây, ví dụ:
+                MessageBox.Show("Error occurred: " + ex.Message);
+            }
 
-            adapter.Fill(MobileData);
-            SetPageComboBox();
-            SetPriceRangeComboBox();
         }
 
         private void SetPageComboBox()
@@ -85,7 +112,7 @@ namespace MyShop.pages
             {
                 if (ListPhone.SelectedItem is DataRowView selectedRow)
                 {
-                    Phone phone = new Phone
+                    PhoneDTO phone = new PhoneDTO
                     {
                         name = selectedRow["Name"].ToString(),
                         os = selectedRow["OS"].ToString(),
@@ -113,7 +140,7 @@ namespace MyShop.pages
 
         }
 
-        private void SetDetails(Phone phone)
+        private void SetDetails(PhoneDTO phone)
         {
             this.DataContext = phone;
         }
@@ -324,7 +351,7 @@ namespace MyShop.pages
             
             if (ListPhone.SelectedItem is DataRowView selectedRow)
             {
-                Phone phone = new Phone
+                PhoneDTO phone = new PhoneDTO
                 {
                     name = selectedRow["Name"].ToString(),
                     os = selectedRow["OS"].ToString(),
@@ -407,20 +434,8 @@ namespace MyShop.pages
 
         private bool DeleteFromDatabase(int idToDelete)
         {
-            string sql = """           
-                DELETE FROM ImportExcel WHERE ID = @ID;
-                """;
-            if (Database.Instance.Connection.State == System.Data.ConnectionState.Closed)
-            {
-                Database.Instance.Connection.Open();
-            }
-            var command = new SqlCommand(sql, Database.Instance.Connection);
-            
-            command.Parameters.Add("@ID", System.Data.SqlDbType.Int)
-                .Value = idToDelete;
-
-            int count = command.ExecuteNonQuery();
-            return count > 0;
+            _phoneBUS.deletePhone(idToDelete);
+            return true;
         }
 
         private void addButton_Click(object sender, RoutedEventArgs e)
@@ -436,21 +451,33 @@ namespace MyShop.pages
                 // Nếu cập nhật thành công, cập nhật lại dữ liệu trong DataGrid
                 DataRow newRow = MobileData.NewRow();
                 newRow["ID"] = maxID+1;
-                newRow["Name"] =screen.Name;
-                newRow["OS"] = screen.OS;
-                newRow["Manufacturer"] = screen.Manufacturer;
-                newRow["Price"] = screen.Price;
-                newRow["PriceOriginal"] = screen.PriceOriginal;
-                newRow["MemoryStorage"] = screen.MemoryStorage;
-                newRow["Image"] = screen.Image;
-                newRow["Quantity"] = screen.Quantity;
-                newRow["Details"] = screen.Details;
+                newRow["Name"] =screen.phoneDTO.name;
+                newRow["OS"] = screen.phoneDTO.os;
+                newRow["Manufacturer"] = screen.phoneDTO.manufacturer;
+                newRow["Price"] = screen.phoneDTO.price;
+                newRow["PriceOriginal"] = screen.phoneDTO.priceOriginal;
+                newRow["MemoryStorage"] = screen.phoneDTO.memoryStorage;
+                newRow["Image"] = screen.phoneDTO.image;
+                newRow["Quantity"] = screen.phoneDTO.quantity;
+                newRow["Details"] = screen.phoneDTO.details;
  
                 MobileData.Rows.Add(newRow);
 
                 ListPhone.ItemsSource = MobileData.DefaultView;
                 SetPageComboBox();
                 ApplyFilters();
+            }
+        }
+
+        private void restoreDB(object sender, RoutedEventArgs e)
+        {
+            if (_phoneBUS.restorePhone())
+            {
+                MessageBox.Show("Restore success");
+            }
+            else
+            {
+                MessageBox.Show(".bak not exits");
             }
         }
     }

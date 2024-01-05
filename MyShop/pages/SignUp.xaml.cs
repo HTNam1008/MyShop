@@ -14,6 +14,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MyShop.Helpers;
+using MyShop.DAO;
+using MyShop.DTO;
+using MyShop.BUS;
 
 namespace MyShop.pages
 {
@@ -50,6 +54,12 @@ namespace MyShop.pages
 
         private async void signUpSubmitButton_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(firstNameTextBox.Text) || string.IsNullOrEmpty(lastNameTextBox.Text) || string.IsNullOrEmpty(emailTextBox.Text) || string.IsNullOrEmpty(addressTextBox.Text) || string.IsNullOrEmpty(phoneTextBox.Text) || string.IsNullOrEmpty(ageTextBox.Text) || string.IsNullOrEmpty(passwordTextBox.Text))
+            {
+                MessageBox.Show("Please enter all information!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             // connect to SQL Server
             var builder = new SqlConnectionStringBuilder();
             builder.DataSource = server.Name;
@@ -58,6 +68,7 @@ namespace MyShop.pages
             builder.TrustServerCertificate = true;
 
             string connectionString = builder.ConnectionString;
+            /*Database.Instance.ConnectionString = connectionString;*/
 
             var connection = new SqlConnection(connectionString);
 
@@ -80,109 +91,59 @@ namespace MyShop.pages
                 /*MessageBox.Show("Successfully connected to SQL Server");*/
                 Database.Instance.ConnectionString = connectionString;
 
-                try
+                string idString = "";
+                bool isExist = true;
+                while (isExist)
                 {
-                    // Create random ID from 000 to 999
-                    // After create ID, check if it exists in database => re-create ID
-                    // if not => use it
-                    string idString = "";
-                    bool isExist = true;
-                    while (isExist)
+                    Random random = new Random();
+                    int id = random.Next(0, 999);
+                    idString = id.ToString();
+                    if (id < 10)
                     {
-                        Random random = new Random();
-                        int id = random.Next(0, 999);
-                        idString = id.ToString();
-                        if (id < 10)
-                        {
-                            idString = "00" + idString;
-                        }
-                        else if (id < 100)
-                        {
-                            idString = "0" + idString;
-                        }
-
-                        string sqlCheck = @"select * from Admin where ID = @ID";
-                        var commandCheck = new SqlCommand(sqlCheck, Database.Instance.Connection);
-                        commandCheck.Parameters.Add("@ID", System.Data.SqlDbType.Char)
-                            .Value = idString;
-                        var reader = commandCheck.ExecuteReader();
-                        if (!reader.HasRows)
-                        {
-                            isExist = false;
-                        }
-                        reader.Close();
+                        idString = "00" + idString;
+                    }
+                    else if (id < 100)
+                    {
+                        idString = "0" + idString;
                     }
 
-                    var newCustomer = new Customer()
+                    AdminBUS adminBus = new AdminBUS();
+                    bool checkExists = adminBus.IsExistsID(idString);
+                    if (!checkExists)
                     {
-                        ID = idString,
-                        FirstName = firstNameTextBox.Text,
-                        LastName = lastNameTextBox.Text,
-                        Email = emailTextBox.Text,
-                        Address = addressTextBox.Text,
-                        Phone = phoneTextBox.Text,
-                        Gender = gender,
-                        Age = int.Parse(ageTextBox.Text),
-                        Password = passwordTextBox.Text,
-                    };
-                    string firstName = newCustomer.FirstName;
-                    string lastName = newCustomer.LastName;
-                    string email = newCustomer.Email;
-                    string address = newCustomer.Address;
-                    string phone = newCustomer.Phone;
-                    int age = newCustomer.Age;
-                    string genderCustomer = newCustomer.Gender;
-                    string password = newCustomer.Password;
-
-                    string passwordHash = Encryption.Encrypt(newCustomer.Password, "1234567890123456");
-
-                    // add to database
-                    string sql = @"insert into Admin(id, firstName, lastName, gender, email, address, phone, age, password) 
-                                values(@ID, @FirstName, @LastName, @Gender, @Email,
-                                @Address, @Phone, @Age, @Password)";
-                    var command = new SqlCommand(sql, Database.Instance.Connection);
-                    command.Parameters.Add("@ID", System.Data.SqlDbType.Char)
-                        .Value = idString;
-                    command.Parameters.Add("@FirstName", System.Data.SqlDbType.Text)
-                        .Value = firstName;
-                    command.Parameters.Add("@LastName", System.Data.SqlDbType.Text)
-                        .Value = lastName;
-                    command.Parameters.Add("@Gender", System.Data.SqlDbType.Text)
-                        .Value = genderCustomer;
-                    command.Parameters.Add("@Email", System.Data.SqlDbType.Text)
-                        .Value = email;
-                    command.Parameters.Add("@Address", System.Data.SqlDbType.Text)
-                        .Value = address;
-                    command.Parameters.Add("@Phone", System.Data.SqlDbType.Text)
-                        .Value = phoneTextBox.Text;
-                    command.Parameters.Add("@Age", System.Data.SqlDbType.Int)
-                        .Value = age;
-                    command.Parameters.Add("@Password", System.Data.SqlDbType.Text)
-                        .Value = passwordHash;
-
-                    int rows = command.ExecuteNonQuery();
-                    if (rows > 0)
-                    {
-                        MessageBox.Show("Successfully signed up!", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
-                        Window newWindow = new SignIn();
-                        newWindow.Show();
-                        this.Close();
+                        isExist = false;
                     }
-                    else
-                    {
-                        MessageBox.Show("Failed to sign up!", "Fail!", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-
                 }
-                catch (SqlException ex)
+
+                AdminDTO adminDTO = new AdminDTO()
                 {
-                    MessageBox.Show($"{ex.Message}\nFailed to sign up!", "Fail", MessageBoxButton.OK, MessageBoxImage.Error);
+                    ID = idString,
+                    FirstName = firstNameTextBox.Text,
+                    LastName = lastNameTextBox.Text,
+                    Email = emailTextBox.Text,
+                    Address = addressTextBox.Text,
+                    Phone = phoneTextBox.Text,
+                    Gender = gender,
+                    Age = int.Parse(ageTextBox.Text),
+                    Password = Encryption.Encrypt(passwordTextBox.Text, "1234567890123456"),
+                };
+
+                AdminBUS adminBUS = new AdminBUS();
+                bool signUpSuccess = adminBUS.CreateAdmin(adminDTO);
+
+                if (signUpSuccess)
+                {
+                    MessageBox.Show("Successfully signed up!", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Window newWindow = new SignIn();
+                    newWindow.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to sign up!", "Fail!", MessageBoxButton.OK, MessageBoxImage.Error);
                     Window window1 = new SignUp();
                     window1.Show();
                 }
-                Window window = new SignIn();
-                window.Show();
-                this.Close();
             }
         }
 

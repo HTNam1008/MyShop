@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MyShop.pages"
       mc:Ignorable="d" d:DesignWidth="800" 
-      Title="Product" Loaded="PageOpened" Height="Auto" d:Height="800">
+      Title="Product" Loaded="PageOpened" Height="Auto" d:Height="800" Unloaded="Page_Unloaded">
     <Page.Resources>
         <ResourceDictionary>
             <FontFamily x:Key="test" >/res/font/#SVN-Transformer</FontFamily>
@@ -51,6 +51,7 @@
                                 </StackPanel>
                                 <StackPanel Grid.Column="4" Orientation="Horizontal" Margin="30,0,10,0">
                                     <Button x:Name="addButton" Margin="10" Content="New Product" Width="Auto" Height="30" HorizontalAlignment="Left" Click="addButton_Click"></Button>
+                                    <Button x:Name="restoreButton" Margin="10" Content="Restore" Width="Auto" Height="30" HorizontalAlignment="Left" Click="restoreDB"></Button>
                                 </StackPanel>
                                     
                             </Grid>

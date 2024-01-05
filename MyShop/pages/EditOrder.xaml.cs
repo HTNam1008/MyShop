@@ -1,4 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
+using MyShop.DAO;
+using MyShop.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,6 +8,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -24,7 +27,7 @@ namespace MyShop.pages
     /// </summary>
     public partial class EditOrder : Window
     {
-        BindingList<Phone> _product = new BindingList<Phone>();
+        BindingList<PhoneDTO> _product = new BindingList<PhoneDTO>();
         SqlDataReader _dataReader;
         int _orderId;
         int _productPerPage = 5;
@@ -35,12 +38,13 @@ namespace MyShop.pages
         int _selectedProduct = -1;
         int _selectedEdit = -1;
         Int32 _totalCost = 0;
-        BindingList<OrderDetail> _od = new BindingList<OrderDetail>();
+        BindingList<OrderDetailDTO> _od = new BindingList<OrderDetailDTO>();
 
-        List<OrderDetail> _phones = new List<OrderDetail>();
+        List<OrderDetailDTO> _phones = new List<OrderDetailDTO>();
         public EditOrder()
         {
             InitializeComponent();
+            Unloaded += Window_Unloaded;
         }
 
         public EditOrder(int orderId)
@@ -48,7 +52,19 @@ namespace MyShop.pages
             InitializeComponent();
 
             _orderId = orderId;
+
+            Unloaded += Window_Unloaded;
         }
+
+        private void Window_Unloaded(object sender, RoutedEventArgs e)
+        {
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.AppSettings.Settings["LastClosedPage"].Value = "pages/EditOrder.xaml";
+            config.Save(ConfigurationSaveMode.Minimal);
+
+            ConfigurationManager.RefreshSection("appSettings");
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             getDataFromDatabase();
@@ -74,11 +90,11 @@ namespace MyShop.pages
                     return;
                 }
 
-                CustomerOrder order = readOrderFromDatabase(_dataReader);
+                CustomerOrderDTO order = readOrderFromDatabase(_dataReader);
 
                 _dataReader.Close();
 
-                CustomerClass customer = GetCustomerClass(order.PhoneNum);
+                CustomerDTO customer = GetCustomerClass(order.PhoneNum);
 
                 if (customer == null)
                 {
@@ -121,7 +137,7 @@ namespace MyShop.pages
 
                 while (_dataReader.Read())
                 {
-                    OrderDetail phoneD = new OrderDetail()
+                    OrderDetailDTO phoneD = new OrderDetailDTO()
                     {
                         phone = (string)_dataReader["PhoneName"],
                         image = (string)_dataReader["image"],
@@ -129,7 +145,7 @@ namespace MyShop.pages
                         amount = (Int32)_dataReader["amount"]
                     };
 
-                    _phones.Add(new OrderDetail()
+                    _phones.Add(new OrderDetailDTO()
                     {
                         phone = phoneD.phone,
                         image = phoneD.image,
@@ -151,7 +167,7 @@ namespace MyShop.pages
             OrderDetailList.ItemsSource = _od;
         }
 
-        private CustomerClass GetCustomerClass(string phoneNum)
+        private CustomerDTO GetCustomerClass(string phoneNum)
         {
             try
             {
@@ -165,7 +181,7 @@ namespace MyShop.pages
                     throw (new Exception("Cannot find customer"));
                 }
 
-                CustomerClass customerClass = new CustomerClass()
+                CustomerDTO customerClass = new CustomerDTO()
                 {
                     PhoneNum = (string)_dataReader["phoneNum"],
                     Name = (string)_dataReader["Name"],
@@ -188,9 +204,9 @@ namespace MyShop.pages
             return null;
         }
 
-        private CustomerOrder readOrderFromDatabase(SqlDataReader dataReader)
+        private CustomerOrderDTO readOrderFromDatabase(SqlDataReader dataReader)
         {
-            CustomerOrder order = new CustomerOrder()
+            CustomerOrderDTO order = new CustomerOrderDTO()
             {
                 OrderId = (int)dataReader["OrderID"],
                 PhoneNum = (string)dataReader["PhoneNum"],
@@ -219,7 +235,7 @@ namespace MyShop.pages
 
                 while (_dataReader.Read())
                 {
-                    Phone phone = new Phone()
+                    PhoneDTO phone = new PhoneDTO()
                     {
                         name = (string)_dataReader["name"],
                         image = (string)_dataReader["image"],
@@ -316,7 +332,7 @@ namespace MyShop.pages
                 else
                 {
                     _dataReader.Close();
-                    CustomerClass cus = GetCustomerClass(Customer_PhoneNum.Text);
+                    CustomerDTO cus = GetCustomerClass(Customer_PhoneNum.Text);
 
                     do
                     {
@@ -465,7 +481,7 @@ namespace MyShop.pages
                 }
 
                 ProductList.ItemsSource = new List<Product>();
-                OrderDetailList.ItemsSource = new List<OrderDetail>();
+                OrderDetailList.ItemsSource = new List<OrderDetailDTO>();
 
                 foreach (var item in _od)
                 {
@@ -491,7 +507,7 @@ namespace MyShop.pages
 
                 _product[_selectedProduct].amount -= amount;
 
-                OrderDetail od = new OrderDetail()
+                OrderDetailDTO od = new OrderDetailDTO()
                 {
                     phone = _product[_selectedProduct].name,
                     amount = amount,
@@ -499,7 +515,7 @@ namespace MyShop.pages
                     total = amount * _product[_selectedProduct].price
                 };
 
-                _phones.Add(new OrderDetail()
+                _phones.Add(new OrderDetailDTO()
                 {
                     phone = od.phone,
                     amount = od.amount,
@@ -620,7 +636,7 @@ namespace MyShop.pages
 
                             TotalCost.Text = _totalCost.ToString();
 
-                            OrderDetailList.ItemsSource = new BindingList<OrderDetail>();
+                            OrderDetailList.ItemsSource = new BindingList<OrderDetailDTO>();
                             ProductList.ItemsSource = new BindingList<Product>();
 
                             OrderDetailList.ItemsSource = _od;
@@ -663,7 +679,7 @@ namespace MyShop.pages
 
                 while (_dataReader.Read())
                 {
-                    Phone phone = new Phone()
+                    PhoneDTO phone = new PhoneDTO()
                     {
                         name = (string)_dataReader["name"],
                         image = (string)_dataReader["image"],

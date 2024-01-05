@@ -1,8 +1,11 @@
 ﻿using Microsoft.Data.SqlClient;
+using MyShop.DAO;
+using MyShop.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +19,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace MyShop.pages
 {
     /// <summary>
@@ -23,7 +27,7 @@ namespace MyShop.pages
     /// </summary>
     public partial class NewOrder : Window
     {
-        BindingList<Phone> _product = new BindingList<Phone>();
+        BindingList<PhoneDTO> _product = new BindingList<PhoneDTO>();
         SqlDataReader _dataReader;
         int _orderPerPage = 5;
         int _totalOrders = -1;
@@ -38,16 +42,26 @@ namespace MyShop.pages
         int _selectedProduct = -1;
         int _selectedEdit = -1;
         Int32 _totalCost = 0;
-        BindingList<OrderDetail> _od = new BindingList<OrderDetail>();
+        Int32 _totalProfit = 0;
+        BindingList<OrderDetailDTO> _od = new BindingList<OrderDetailDTO>();
         public NewOrder()
         {
             InitializeComponent();
+            Unloaded += Window_Unloaded;
+        }
+
+        private void Window_Unloaded(object sender, RoutedEventArgs e)
+        {
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.AppSettings.Settings["LastClosedPage"].Value = "pages/NewOrder.xaml";
+            config.Save(ConfigurationSaveMode.Minimal);
+
+            ConfigurationManager.RefreshSection("appSettings");
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             getDataFromDatabase();
-
             ShipDate.SelectedDate = DateTime.Now.AddDays(3);
             ShipDate.DisplayDateStart = DateTime.Now.AddDays(3);
             ShipDate.DisplayDateEnd = DateTime.Now.AddYears(2);
@@ -70,7 +84,7 @@ namespace MyShop.pages
 
                 while (_dataReader.Read())
                 {
-                    Phone phone = new Phone()
+                    PhoneDTO phone = new PhoneDTO()
                     {
                         name = (string)_dataReader["name"],
                         image = (string)_dataReader["image"],
@@ -78,7 +92,8 @@ namespace MyShop.pages
                         amount = (Int32)_dataReader["amount"],
                         os = (string)_dataReader["os"],
                         manufacturer = (string)_dataReader["manufacturer"],
-                        memoryStorage = (string)_dataReader["memoryStorage"]
+                        memoryStorage = (string)_dataReader["memoryStorage"],
+                        priceOriginal = (Int32)_dataReader["priceOriginal"]
                     };
                     _totalProductCount = (int)_dataReader["TotalCount"];
                     _product.Add(phone);
@@ -114,7 +129,7 @@ namespace MyShop.pages
         {
         }
 
-        private CustomerClass GetCustomerClass(string phoneNum)
+        private CustomerDTO GetCustomerClass(string phoneNum)
         {
             try
             {
@@ -128,7 +143,7 @@ namespace MyShop.pages
                     throw (new Exception("Cannot find customer"));
                 }
 
-                CustomerClass customerClass = new CustomerClass()
+                CustomerDTO customerClass = new CustomerDTO()
                 {
                     PhoneNum = (string)_dataReader["phoneNum"],
                     Name = (string)_dataReader["Name"],
@@ -165,7 +180,7 @@ namespace MyShop.pages
                 MessageBox.Show("Select at least 1 item");
 
                 return;
-            }    
+            }
 
             string phonenum = Customer_PhoneNum.Text;
 
@@ -174,8 +189,8 @@ namespace MyShop.pages
                 if (item < '0' || item > '9')
                 {
                     MessageBox.Show("Invalid phonenum");
-                }    
-            }    
+                }
+            }
 
             try
             {
@@ -203,7 +218,7 @@ namespace MyShop.pages
                 else
                 {
                     _dataReader.Close();
-                    CustomerClass cus = GetCustomerClass(Customer_PhoneNum.Text);
+                    CustomerDTO cus = GetCustomerClass(Customer_PhoneNum.Text);
 
                     do
                     {
@@ -244,16 +259,16 @@ namespace MyShop.pages
 
                                 return;
                             }
-                            
 
-                            
+
+
 
                         }
                     } while (false);
                 }
 
-                sql = $"insert into CustomerOrder(phoneNum, createDate, shipmentDate, status, totalCost)" +
-                    $" values ('{phonenum}', '{DateTime.Now.ToString()}', '{ShipDate.SelectedDate.ToString()}', 'pending', {_totalCost})";
+                sql = $"insert into CustomerOrder(phoneNum, createDate, shipmentDate, status, totalCost, totalProfit)" +
+                    $" values ('{phonenum}', '{DateTime.Now.ToString()}', '{ShipDate.SelectedDate.ToString()}', 'pending', {_totalCost},{_totalProfit})";
 
                 command = new SqlCommand(sql, Database.Instance.Connection);
                 res = command.ExecuteNonQuery();
@@ -311,7 +326,8 @@ namespace MyShop.pages
                 }
 
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Fail to create order please recheck your information!" + ex.ToString());
 
@@ -368,9 +384,9 @@ namespace MyShop.pages
                     MessageBox.Show("Out of stock", "Error", MessageBoxButton.OK);
 
                     return;
-                }    
+                }
 
-                foreach(var item in _od)
+                foreach (var item in _od)
                 {
                     if (item.phone == _product[_selectedProduct].name)
                     {
@@ -378,26 +394,29 @@ namespace MyShop.pages
                         {
                             item.amount = amount;
                             item.total = amount * _product[_selectedProduct].price;
+                            item.totalProfit = amount * _product[_selectedProduct].priceOriginal;
                         }
                         return;
                     }
-                }    
+                }
 
-                OrderDetail od = new OrderDetail()
+                OrderDetailDTO od = new OrderDetailDTO()
                 {
                     phone = _product[_selectedProduct].name,
                     amount = amount,
                     image = _product[_selectedProduct].image,
-                    total = amount * _product[_selectedProduct].price
+                    total = amount * _product[_selectedProduct].price,
+                    totalProfit = amount * _product[_selectedProduct].priceOriginal
                 };
 
                 _od.Add(od);
 
                 _totalCost += od.total;
-
+                _totalProfit += od.totalProfit;
                 OrderDetailList.ItemsSource = _od;
                 TotalCost.Text = _totalCost.ToString();
-            } catch
+            }
+            catch
             {
                 MessageBox.Show("Invalid amount", "Error", MessageBoxButton.OK);
             }
@@ -408,7 +427,7 @@ namespace MyShop.pages
             if (ProductList.SelectedIndex < 0)
             {
                 return;
-            }    
+            }
 
             _selectedProduct = ProductList.SelectedIndex;
 
@@ -471,7 +490,7 @@ namespace MyShop.pages
 
                     return;
                 }
-               
+
 
                 foreach (var item in _product)
                 {
@@ -480,19 +499,21 @@ namespace MyShop.pages
                         if (amount != _od[_selectedEdit].amount)
                         {
                             _totalCost += (amount - _od[_selectedEdit].amount) * item.price;
+                            _totalProfit += (amount - _od[_selectedEdit].amount) * item.priceOriginal;
+
                             _od[_selectedEdit].amount = amount;
 
                             _od[_selectedEdit].total = amount * item.price;
 
                             TotalCost.Text = _totalCost.ToString();
 
-                            OrderDetailList.ItemsSource = new BindingList<OrderDetail>();
+                            OrderDetailList.ItemsSource = new BindingList<OrderDetailDTO>();
 
                             OrderDetailList.ItemsSource = _od;
 
                             return;
-                        }    
-                    }    
+                        }
+                    }
                 }
 
                 MessageBox.Show("Invalid selection", "Error", MessageBoxButton.OK);
@@ -526,7 +547,7 @@ namespace MyShop.pages
 
                 while (_dataReader.Read())
                 {
-                    Phone phone = new Phone()
+                    PhoneDTO phone = new PhoneDTO()
                     {
                         name = (string)_dataReader["name"],
                         image = (string)_dataReader["image"],
@@ -558,7 +579,8 @@ namespace MyShop.pages
                 ProductList.ItemsSource = _product;
 
                 _dataReader.Close();
-            } catch
+            }
+            catch
             {
                 _dataReader.Close();
             }

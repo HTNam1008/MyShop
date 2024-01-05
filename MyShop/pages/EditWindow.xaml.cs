@@ -6,12 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Configuration;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MyShop.DAO;
+using MyShop.DTO;
 
 namespace MyShop.pages
 {
@@ -20,12 +23,25 @@ namespace MyShop.pages
     /// </summary>
     public partial class EditWindow : Window
     {
-        public Phone editPhone { get; set; }
-        public EditWindow(Phone EditPhone)
+        public PhoneDTO editPhone { get; set; }
+        private readonly PhoneDAO phoneDAO;
+        public EditWindow(PhoneDTO EditPhone)
         {
             InitializeComponent();
             editPhone = EditPhone;
+            phoneDAO = new PhoneDAO();
+            Unloaded += Window_Unloaded;
         }
+
+        private void Window_Unloaded(object sender, RoutedEventArgs e)
+        {
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.AppSettings.Settings["LastClosedPage"].Value = "pages/EditWindow.xaml";
+            config.Save(ConfigurationSaveMode.Minimal);
+
+            ConfigurationManager.RefreshSection("appSettings");
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             DataContext = editPhone;
@@ -46,7 +62,7 @@ namespace MyShop.pages
             editPhone.priceOriginal = Convert.ToInt32(PriceOriginalPhone.Text);
             editPhone.quantity=Convert.ToInt32(QuantityPhone.Text);
             editPhone.details = DetailsPhone.Text;
-            string sql = """           
+            /*string sql = """           
                 update ImportExcel
                 set Name=@name, OS=@os, Manufacturer=@manufacturer, Price=@price,MemoryStorage=@memoryStorage, Image=@image, Details=@details, Quantity=@quantity, PriceOriginal=@priceOriginal
                 where ID=@ID
@@ -75,19 +91,11 @@ namespace MyShop.pages
             command.Parameters.Add("@quantity", System.Data.SqlDbType.Int)
                 .Value = editPhone.quantity;
             command.Parameters.Add("@priceOriginal", System.Data.SqlDbType.Int)
-                .Value = editPhone.priceOriginal;
+                .Value = editPhone.priceOriginal;*/
 
-            int count = command.ExecuteNonQuery();
-
-            if (count > 0)
-            {
-                MessageBox.Show($"Edit successfully phone: {editPhone.name}");
-                DialogResult = true;
-            }
-            else
-            {
-                MessageBox.Show("Edit failed");
-            }
+            phoneDAO.updatePhone(editPhone);
+            MessageBox.Show($"Insert successfully new phone: {Name}");
+            DialogResult = true;
         }
 
     }

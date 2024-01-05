@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.Data.SqlClient;
+using MyShop.DAO;
 
 namespace MyShop.pages
 {
