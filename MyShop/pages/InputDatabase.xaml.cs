@@ -48,6 +48,7 @@ namespace MyShop.pages
             builder.InitialCatalog = database;
             builder.IntegratedSecurity = true;
             builder.TrustServerCertificate = true;
+            builder.MultipleActiveResultSets = true;
 
             string connectionString = builder.ConnectionString;
 

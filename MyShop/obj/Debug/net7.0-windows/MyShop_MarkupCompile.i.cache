@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 C:\Users\Dell\Source\Repos\HTNam1008\MyShop\MyShop\App.xaml
-13834404831
+17-160130685
 
-23-942162571
+30-1532629254
 217-2020058644
-controls\MyOption.xaml;controls\MyTextBox.xaml;controls\UserPopUp.xaml;MainWindow.xaml;pages\Home.xaml;pages\InputDatabase.xaml;pages\InputServer.xaml;pages\Order.xaml;pages\Product.xaml;pages\Setting.xaml;pages\SignIn.xaml;pages\SignUp.xaml;pages\Statistic.xaml;
+controls\MyOption.xaml;controls\MyTextBox.xaml;controls\UserPopUp.xaml;MainWindow.xaml;pages\AddWindow.xaml;pages\EditOrder.xaml;pages\EditWindow.xaml;pages\Home.xaml;pages\InputDatabase.xaml;pages\InputServer.xaml;pages\NewOrder.xaml;pages\Order.xaml;pages\Product.xaml;pages\Setting.xaml;pages\SignIn.xaml;pages\SignUp.xaml;pages\Statistic.xaml;
 
 True
 

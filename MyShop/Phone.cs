@@ -18,6 +18,8 @@ namespace MyShop.pages
         public int price { get; set; }
         public string manufacturer { get; set; }
 
+        public int amount {  get; set; }
+
         public string memoryStorage { get; set; }
     }
 }
