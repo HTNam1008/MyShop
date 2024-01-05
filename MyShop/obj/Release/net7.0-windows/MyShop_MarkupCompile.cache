@@ -4,11 +4,11 @@
 winexe
 C#
 .cs
-C:\Users\Dell\source\repos\HTNam1008\MyShop\MyShop\obj\Debug\net7.0-windows\
+C:\Users\Dell\source\repos\HTNam1008\MyShop\MyShop\obj\Release\net7.0-windows\
 MyShop
 none
 false
-TRACE;DEBUG;NET;NET7_0;NETCOREAPP
+TRACE;RELEASE;NET;NET7_0;NETCOREAPP
 C:\Users\Dell\source\repos\HTNam1008\MyShop\MyShop\App.xaml
 20135132283
 

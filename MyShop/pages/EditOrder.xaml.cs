@@ -3,19 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Xml.Linq;
 
 namespace MyShop.pages
 {
@@ -277,7 +267,7 @@ namespace MyShop.pages
                 MessageBox.Show("Select at least 1 item");
 
                 return;
-            }    
+            }
 
             string phonenum = Customer_PhoneNum.Text;
 
@@ -286,8 +276,8 @@ namespace MyShop.pages
                 if (item < '0' || item > '9')
                 {
                     MessageBox.Show("Invalid phonenum");
-                }    
-            }    
+                }
+            }
 
             try
             {
@@ -297,7 +287,7 @@ namespace MyShop.pages
                 SqlCommand command = new SqlCommand(sql, Database.Instance.Connection);
                 _dataReader = command.ExecuteReader();
 
-               
+
                 if (!_dataReader.Read())
                 {
                     _dataReader.Close();
@@ -323,7 +313,7 @@ namespace MyShop.pages
                         if (cus.Name == Customer_name.Text && cus.Address == Address.Text && cus.Gender == Gender.Text && cus.Email == Email.Text)
                         {
                             break;
-                        }    
+                        }
                         MessageBoxResult result = MessageBox.Show("This phone number already exists in the database!\n Would you like to update the information?", "Phone number exists", MessageBoxButton.YesNo);
 
                         if (result == MessageBoxResult.No)
@@ -403,7 +393,8 @@ namespace MyShop.pages
                     }
                 }
 
-                } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Fail to create order please recheck your information!" + ex.ToString());
 
@@ -505,7 +496,7 @@ namespace MyShop.pages
                     amount = od.amount,
                     image = od.image,
                     total = od.total
-                }) ;
+                });
 
                 _od.Add(od);
 
@@ -514,7 +505,8 @@ namespace MyShop.pages
                 OrderDetailList.ItemsSource = _od;
                 ProductList.ItemsSource = _product;
                 TotalCost.Text = _totalCost.ToString();
-            } catch
+            }
+            catch
             {
                 MessageBox.Show("Invalid amount");
             }
@@ -525,7 +517,7 @@ namespace MyShop.pages
             if (ProductList.SelectedIndex < 0)
             {
                 return;
-            }    
+            }
 
             _selectedProduct = ProductList.SelectedIndex;
 
@@ -547,7 +539,7 @@ namespace MyShop.pages
             _phones[OrderDetailList.SelectedIndex].amount = _od[OrderDetailList.SelectedIndex].amount;
             _totalCost -= _od[_selectedEdit].total;
             _od.RemoveAt(OrderDetailList.SelectedIndex);
-            
+
 
             AmountEdit.Text = "";
 
@@ -590,7 +582,7 @@ namespace MyShop.pages
 
                     return;
                 }
-               
+
 
                 foreach (var item in _product)
                 {
@@ -616,7 +608,7 @@ namespace MyShop.pages
                             foreach (var i in _od)
                             {
                                 _totalCost += i.total;
-                            }    
+                            }
 
                             TotalCost.Text = _totalCost.ToString();
 
@@ -627,8 +619,8 @@ namespace MyShop.pages
                             ProductList.ItemsSource = _product;
 
                             return;
-                        }    
-                    }    
+                        }
+                    }
                 }
 
                 MessageBox.Show("Invalid selection");
@@ -693,7 +685,8 @@ namespace MyShop.pages
                 }
 
                 _dataReader.Close();
-            } catch
+            }
+            catch
             {
                 _dataReader.Close();
             }
