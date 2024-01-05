@@ -58,35 +58,43 @@ namespace MyShop.pages
             command.Parameters.Add("@Skip", SqlDbType.Int).Value = (_currentOrderPage - 1) * _orderPerPage;
             command.Parameters.Add("@Take", SqlDbType.Int).Value = _orderPerPage;
             
-            _dataReader = command.ExecuteReader();
-
-            while (_dataReader.Read())
+            try
             {
-                CustomerOrder order = readOrderFromDatabase(_dataReader);
-                _OrderList.Add(order);
+                _dataReader = command.ExecuteReader();
 
-                _totalOrderCount = (int)_dataReader["Total"];
-            }
+                while (_dataReader.Read())
+                {
+                    CustomerOrder order = readOrderFromDatabase(_dataReader);
+                    _OrderList.Add(order);
 
-            _dataReader.Close();
+                    _totalOrderCount = (int)_dataReader["Total"];
+                }
 
-            if (_totalOrderCount != _totalOrderItems)
+                _dataReader.Close();
+
+                if (_totalOrderCount != _totalOrderItems)
+                {
+                    _totalOrderItems = _totalOrderCount;
+                    _totalOrders = (_totalOrderItems / _orderPerPage) +
+                        (((_totalOrderItems % _orderPerPage) == 0) ? 0 : 1);
+                }
+
+                CurOrderPage.Text = _currentOrderPage.ToString();
+                TotalOrderPage.Text = _totalOrders.ToString();
+
+                if (_totalOrders == -1 || _totalOrders == 0)
+                {
+                    CurOrderPage.Text = "1";
+                    TotalOrderPage.Text = "1";
+                }
+
+                OrderList.ItemsSource = _OrderList;
+            } catch
             {
-                _totalOrderItems = _totalOrderCount;
-                _totalOrders = (_totalOrderItems / _orderPerPage) +
-                    (((_totalOrderItems % _orderPerPage) == 0) ? 0 : 1);
+                MessageBox.Show("Failed to connect to database!", "Error", MessageBoxButton.OK);
             }
+            
 
-            CurOrderPage.Text = _currentOrderPage.ToString();
-            TotalOrderPage.Text = _totalOrders.ToString();
-
-            if (_totalOrders == -1 || _totalOrders == 0)
-            {
-                CurOrderPage.Text = "1";
-                TotalOrderPage.Text = "1";
-            }
-
-            OrderList.ItemsSource = _OrderList;
         }
 
         private CustomerOrder readOrderFromDatabase(SqlDataReader dataReader)
@@ -499,7 +507,10 @@ namespace MyShop.pages
             try
             {
                 Window window = new EditOrder(int.Parse(IdField.Text));
-                window.Show();
+                window.ShowDialog();
+
+                _currentOrderPage = 1;
+                getDataFromDatabase();
             }
             catch
             {

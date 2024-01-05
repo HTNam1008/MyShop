@@ -261,6 +261,7 @@ namespace MyShop.pages
 
         private void back_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -398,12 +399,20 @@ namespace MyShop.pages
                     if (res <= 0)
                     {
                         MessageBox.Show("Fail to complete order please recheck your information!");
-
-
                     }
                 }
 
-                } catch (Exception ex)
+                sql = $"update CustomerOrder set phonenum ='{Customer_PhoneNum.Text}', totalCost = {_totalCost}, shipmentDate = '{ShipDate.SelectedDate}' where OrderId = {_orderId}";
+
+                command = new SqlCommand(sql, Database.Instance.Connection);
+                res = command.ExecuteNonQuery();
+                MessageBox.Show(sql + $" {res} rows affected");
+                if (res <= 0)
+                {
+                    MessageBox.Show("Fail to complete order please recheck your information!");
+                }
+
+            } catch (Exception ex)
             {
                 MessageBox.Show("Fail to create order please recheck your information!" + ex.ToString());
 
@@ -463,6 +472,7 @@ namespace MyShop.pages
 
                     return;
                 }
+
 
                 ProductList.ItemsSource = new List<Product>();
                 OrderDetailList.ItemsSource = new List<OrderDetail>();
@@ -590,11 +600,10 @@ namespace MyShop.pages
 
                     return;
                 }
-               
 
                 foreach (var item in _product)
                 {
-                    if (item.name == _od[_selectedEdit].phone)
+                    if (item.name == _od[_selectedEdit].phone && amount - _od[_selectedEdit].amount <= item.amount)
                     {
                         if (amount != _od[_selectedEdit].amount)
                         {

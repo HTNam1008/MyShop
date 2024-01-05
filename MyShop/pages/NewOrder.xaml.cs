@@ -250,7 +250,7 @@ namespace MyShop.pages
                 }
 
                 sql = $"insert into CustomerOrder(phoneNum, createDate, shipmentDate, status, totalCost)" +
-                    $" values ('{phonenum}', '{DateTime.Now.ToString()}', '{ShipDate.SelectedDate.ToString()}', 'pending', {_totalCost})";
+                    $" values ('{phonenum}', '{DateTime.Now.ToString()}', '{ShipDate.SelectedDate}', 'pending', {_totalCost})";
 
                 command = new SqlCommand(sql, Database.Instance.Connection);
                 res = command.ExecuteNonQuery();

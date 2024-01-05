@@ -157,13 +157,13 @@
                             </ListView>
                             <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1">
                                 <StackPanel Margin="5 0 0 5" Orientation="Horizontal">
-                                    <Border BorderThickness="0" CornerRadius="0 0 0 15" Height="40" Width="40" Background="#416665">
+                                    <Border BorderThickness="0" CornerRadius="0 0 0 15" Height="40" Width="60" Background="#416665">
                                         <Button Name="PreviousOrderDetailPage" Click="PreviousOrderDetailPage_Click" BorderThickness="0" Padding="0 0 0 10" Content="&lt;" FontSize="20" FontWeight="Bold" Foreground="White" Height="40" Width="40" Background="Transparent" Template="{StaticResource NoMouseOverButtonTemplate}"></Button>
                                     </Border>
                                     <Border VerticalAlignment="Center" Background="#DDDDDD">
-                                        <TextBlock x:Name="PageOrderDetailInfo" FontSize="30" TextAlignment="Center" Width="130"> <Run Name="CurOrderDetailPage" Text=""/> / <Run Name="TotalOrderDetailPage" Text=""></Run></TextBlock>
+                                        <TextBlock x:Name="PageOrderDetailInfo" FontSize="30" TextAlignment="Center" Width="270"> <Run Name="CurOrderDetailPage" Text=""/> / <Run Name="TotalOrderDetailPage" Text=""></Run></TextBlock>
                                     </Border>
-                                    <Border BorderThickness="0"  CornerRadius="0 0 15 0" Height="40" Width="40" Background="#416665">
+                                    <Border BorderThickness="0"  CornerRadius="0 0 15 0" Height="40" Width="60" Background="#416665">
                                         <Button Name="NextOrderDetailPage" Click="NextOrderDetailPage_Click" BorderThickness="0" Padding="0 0 0 10" Content="&gt;" FontSize="20" FontWeight="Bold" Foreground="White" Height="40" Width="40" Background="Transparent" Template="{StaticResource NoMouseOverButtonTemplate}"/>
                                     </Border>
                                 </StackPanel>

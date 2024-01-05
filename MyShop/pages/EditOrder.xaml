@@ -126,7 +126,7 @@
             </Border>
 
             <Border Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" CornerRadius="0 10 0 0" Background="#416665">
-                <TextBlock Width="500" Height="50" Text="New Order Detail" FontSize="30" TextAlignment="Center" Foreground="white" HorizontalAlignment="Center" Style="{StaticResource TitleText}"/>
+                <TextBlock Width="500" Height="50" Text="Edit Order Detail" FontSize="30" TextAlignment="Center" Foreground="white" HorizontalAlignment="Center" Style="{StaticResource TitleText}"/>
             </Border>
 
             <Border Grid.Row="1" Padding="10" Grid.Column="2" CornerRadius="0 0 10 0" Background="WhiteSmoke">
