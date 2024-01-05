@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,11 +45,18 @@ namespace MyShop.pages
 
         private void connectServerButton_Click(object sender, RoutedEventArgs e)
         {
-            if(!string.IsNullOrEmpty(txtServer.Text) && txtServer.Text.Length > 0)
+            if (!string.IsNullOrEmpty(txtServer.Text) && txtServer.Text.Length > 0)
             {
                 //Server server = new Server(txtServer.Text);
-                Server.Instance.Name= txtServer.Text;
-                MessageBox.Show($"Successfully connected to server {Server.Instance.Name}!", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
+                Server.Instance.Name = txtServer.Text;
+                MessageBox.Show($"Get server {Server.Instance.Name}!", "Success!", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                string server = txtServer.Text;
+                var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                config.AppSettings.Settings["Server"].Value = server;
+                config.Save(ConfigurationSaveMode.Minimal);
+                ConfigurationManager.RefreshSection("appSettings");
+
                 Window window = new InputDatabase();
                 window.Show();
                 this.Close();
@@ -73,6 +81,14 @@ namespace MyShop.pages
                 closeImage = "res/asset/close.png",
                 dbImage = "res/asset/server.png",
             };
+
+            var server = ConfigurationManager.AppSettings["Server"];
+
+            if (server.Length != 0)
+            {
+                txtServer.Text = server;
+            }
+
             this.DataContext = sourceImage;
         }
     }
