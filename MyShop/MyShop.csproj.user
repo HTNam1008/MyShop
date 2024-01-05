@@ -29,6 +29,9 @@
     <Compile Update="pages\SignUp.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="pages\TopSellersWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="controls\MyOption.xaml">
@@ -56,6 +59,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="pages\SignUp.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="pages\TopSellersWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

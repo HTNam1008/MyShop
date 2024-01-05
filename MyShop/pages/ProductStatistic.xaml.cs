@@ -59,7 +59,7 @@ namespace MyShop.pages
             {
                 connection.Open();
                 // Tạo câu truy vấn để kết hợp dữ liệu từ hai bảng
-                string query = "SELECT od.OrderID, od.PhoneName, co.CreateDate " +
+                string query = "SELECT od.OrderID, od.PhoneName, co.CreateDate,od.amount " +
                                "FROM OrderDetail od " +
                                "INNER JOIN CustomerOrder co ON od.OrderID = co.OrderID";
 
@@ -392,6 +392,43 @@ namespace MyShop.pages
                 MonthCombobox.SelectedIndex = 0;
                 DateMode(_currentProduct, (DateTime)startDate, (DateTime)endDate);
             }
+        }
+
+        private void btnListBestSeller_Click(object sender, RoutedEventArgs e)
+        {
+            /*Dictionary<string, int> phoneNameTotalAmount = new Dictionary<string, int>();
+
+            // Lặp qua mỗi hàng trong DataTable để tính tổng amount cho mỗi PhoneName
+            foreach (DataRow row in _dataTable.Rows)
+            {
+                string phoneName = row["PhoneName"].ToString();
+                int amount = Convert.ToInt32(row["amount"]);
+
+                // Nếu phoneName đã tồn tại trong Dictionary, cập nhật tổng amount
+                if (phoneNameTotalAmount.ContainsKey(phoneName))
+                {
+                    phoneNameTotalAmount[phoneName] += amount;
+                }
+                else // Nếu chưa tồn tại, thêm vào Dictionary với giá trị amount ban đầu
+                {
+                    phoneNameTotalAmount.Add(phoneName, amount);
+                }
+            }
+
+            // Sắp xếp theo giảm dần của tổng amount và chọn top 5
+            var top5PhoneNames = phoneNameTotalAmount.OrderByDescending(x => x.Value)
+                                                     .Take(5)
+                                                     .ToList();
+
+            List<TopSellerInfo> topSellers = new List<TopSellerInfo>();
+            foreach (var item in top5PhoneNames)
+            {
+                topSellers.Add(new TopSellerInfo { PhoneName = item.Key, TotalAmount = item.Value });
+            }*/
+
+            TopSellersWindow topSellersWindow = new TopSellersWindow(_dataTable);
+            //topSellersWindow.DisplayTopSellers(topSellers);
+            topSellersWindow.Show();
         }
     }
 }

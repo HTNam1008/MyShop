@@ -1,3 +1,29 @@
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\MyShop.csproj.AssemblyReference.cache
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\ProductStatistic.baml
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\TopSellersWindow.baml
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\controls\MyOption.g.cs
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\controls\MyTextBox.g.cs
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\controls\UserPopUp.g.cs
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\MainWindow.g.cs
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\AddWindow.g.cs
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\EditOrder.g.cs
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\EditWindow.g.cs
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Home.g.cs
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\InputDatabase.g.cs
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\InputServer.g.cs
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\NewOrder.g.cs
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Order.g.cs
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Product.g.cs
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\ProductStatistic.g.cs
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Setting.g.cs
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\SignIn.g.cs
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\SignUp.g.cs
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Statistic.g.cs
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\TopSellersWindow.g.cs
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\App.g.cs
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\MyShop_MarkupCompile.cache
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\MyShop_MarkupCompile.lref
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\bin\Debug\net7.0-windows\res\asset\close.png
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\bin\Debug\net7.0-windows\res\asset\database.png
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\bin\Debug\net7.0-windows\res\asset\Email.png
@@ -33,6 +59,8 @@ D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\bin\Debug\net7.0-wi
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\bin\Debug\net7.0-windows\ExcelDataReader.dll
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\bin\Debug\net7.0-windows\ExcelDataReader.DataSet.dll
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\bin\Debug\net7.0-windows\FontAwesome.WPF.dll
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\bin\Debug\net7.0-windows\LiveCharts.Wpf.dll
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\bin\Debug\net7.0-windows\LiveCharts.dll
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\bin\Debug\net7.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\bin\Debug\net7.0-windows\Microsoft.Data.SqlClient.dll
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\bin\Debug\net7.0-windows\Microsoft.Identity.Client.dll
@@ -60,28 +88,6 @@ D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\bin\Debug\net7.0-wi
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\bin\Debug\net7.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\bin\Debug\net7.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\bin\Debug\net7.0-windows\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\MyShop.csproj.AssemblyReference.cache
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\controls\MyOption.g.cs
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\controls\MyTextBox.g.cs
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\controls\UserPopUp.g.cs
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\MainWindow.g.cs
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\AddWindow.g.cs
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\EditOrder.g.cs
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\EditWindow.g.cs
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Home.g.cs
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\InputDatabase.g.cs
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\InputServer.g.cs
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\NewOrder.g.cs
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Order.g.cs
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Product.g.cs
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Setting.g.cs
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\SignIn.g.cs
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\SignUp.g.cs
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Statistic.g.cs
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\App.g.cs
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\MyShop_MarkupCompile.cache
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\MyShop_MarkupCompile.lref
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\App.baml
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\controls\MyOption.baml
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\controls\MyTextBox.baml
@@ -111,120 +117,3 @@ D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-wi
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\MyShop.pdb
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\MyShop.genruntimeconfig.cache
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\ref\MyShop.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\res\asset\close.png
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\res\asset\database.png
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\res\asset\Email.png
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\res\asset\eye.png
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\res\asset\facebook.png
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\res\asset\female.png
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\res\asset\google.png
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\res\asset\img.png
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\res\asset\linkedin.png
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\res\asset\Lock.png
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\res\asset\male.png
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\res\asset\minimize.png
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\res\asset\server.png
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\res\icon\error.png
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\MyShop.exe
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\res\ava\ava_1.png
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\res\ava\ava_10.png
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\res\ava\ava_2.png
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\res\ava\ava_3.png
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\res\ava\ava_4.png
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\res\ava\ava_5.png
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\res\ava\ava_6.png
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\res\ava\ava_7.png
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\res\ava\ava_8.png
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\res\ava\ava_9.png
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\MyShop.dll.config
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\MyShop.deps.json
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\MyShop.runtimeconfig.json
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\MyShop.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\MyShop.pdb
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\Azure.Core.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\Azure.Identity.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\ExcelDataReader.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\ExcelDataReader.DataSet.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\FontAwesome.WPF.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\Microsoft.Data.SqlClient.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\Microsoft.Identity.Client.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\Microsoft.Identity.Client.Extensions.Msal.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Abstractions.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\Microsoft.IdentityModel.JsonWebTokens.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Logging.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Protocols.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\Microsoft.IdentityModel.Tokens.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\Microsoft.SqlServer.Server.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\System.Data.SqlClient.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\System.IdentityModel.Tokens.Jwt.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\System.Memory.Data.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\System.Runtime.Caching.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\runtimes\win-arm64\native\sni.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\runtimes\win-x64\native\sni.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\runtimes\win-x86\native\sni.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\bin\Debug\net7.0-windows\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\MyShop.csproj.AssemblyReference.cache
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\controls\MyOption.g.cs
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\controls\MyTextBox.g.cs
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\controls\UserPopUp.g.cs
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\MainWindow.g.cs
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\pages\AddWindow.g.cs
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\pages\EditOrder.g.cs
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\pages\EditWindow.g.cs
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Home.g.cs
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\pages\InputDatabase.g.cs
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\pages\InputServer.g.cs
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\pages\NewOrder.g.cs
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Order.g.cs
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Product.g.cs
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Setting.g.cs
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\pages\SignIn.g.cs
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\pages\SignUp.g.cs
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Statistic.g.cs
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\App.g.cs
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\MyShop_MarkupCompile.cache
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\MyShop_MarkupCompile.lref
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\App.baml
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\controls\MyOption.baml
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\controls\MyTextBox.baml
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\controls\UserPopUp.baml
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\MainWindow.baml
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\pages\AddWindow.baml
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\pages\EditOrder.baml
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\pages\EditWindow.baml
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Home.baml
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\pages\InputDatabase.baml
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\pages\InputServer.baml
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\pages\NewOrder.baml
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Order.baml
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Product.baml
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Setting.baml
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\pages\SignIn.baml
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\pages\SignUp.baml
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Statistic.baml
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\MyShop.g.resources
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\MyShop.GeneratedMSBuildEditorConfig.editorconfig
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\MyShop.AssemblyInfoInputs.cache
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\MyShop.AssemblyInfo.cs
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\MyShop.csproj.CoreCompileInputs.cache
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\MyShop.csproj.CopyComplete
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\MyShop.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\refint\MyShop.dll
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\MyShop.pdb
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\MyShop.genruntimeconfig.cache
-D:\TRUONG TAN DAT\DAI HOC DUNG HOC DAI\Senior_3\Windows Programming\Git\Test\MyShop\MyShop\obj\Debug\net7.0-windows\ref\MyShop.dll
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\bin\Debug\net7.0-windows\LiveCharts.Wpf.dll
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\bin\Debug\net7.0-windows\LiveCharts.dll
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\ProductStatistic.baml
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\ProductStatistic.g.cs

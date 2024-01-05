@@ -120,6 +120,8 @@
                 <RowDefinition Height="40"/>
                 <RowDefinition />
                 <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+
             </Grid.RowDefinitions>
 
             <TextBlock Name="Title"
@@ -151,6 +153,20 @@
                     CornerRadius="15">
                 <lvc:CartesianChart Name="chart" LegendLocation="Bottom" Margin="10"/>
             </Border>
+            
+         
+                <Button 
+                    Grid.Row="3"
+                    Name="btnListBestSeller" 
+                    Content="Xem danh sách sản phẩm bán chạy"
+                    Margin="0,0,10,0"
+                    Padding="5"
+                    Foreground="Black"
+                    Click="btnListBestSeller_Click"
+                    BorderThickness="1" BorderBrush="#071952"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Right"/>
+     
         </Grid>
 
       
