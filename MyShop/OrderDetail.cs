@@ -14,6 +14,7 @@ namespace MyShop
         public int amount { get; set; }
         public int total { get; set; }
         public string image { get; set; }
+        public int totalProfit { get; set; }    
 
         public event PropertyChangedEventHandler? PropertyChanged;
     }

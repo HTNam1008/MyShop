@@ -107,7 +107,7 @@ namespace MyShop
                 Popup.PlacementTarget = btnStatistic;
                 Popup.Placement = PlacementMode.Right;
                 Popup.IsOpen = true;
-                Header.PopupText.Text = "Statistic";
+                Header.PopupText.Text = "Revenue Statistic";
             }
 
         }
@@ -211,6 +211,36 @@ namespace MyShop
         private void txtExit_MouseDown(object sender, MouseButtonEventArgs e)
         {
             btnExit_Click(sender, e);
+        }
+
+        private void btnProductStatistic_Click(object sender, RoutedEventArgs e)
+        {
+            fContainer.Navigate(new System.Uri("pages/ProductStatistic.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        private void btnProductStatistic_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+            if (btnToggle.IsChecked != true)
+            {
+                Popup.PlacementTarget = btnProductStatistic;
+                Popup.Placement = PlacementMode.Right;
+                Popup.IsOpen = true;
+                Header.PopupText.Text = "Product Statistic";
+            }
+
+        }
+
+        private void btnProductStatistic_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Popup.Visibility = Visibility.Collapsed;
+            Popup.IsOpen = false;
+
+        }
+
+        private void txtProductStatistic_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            btnProductStatistic_Click(sender, e);
         }
     }
 }

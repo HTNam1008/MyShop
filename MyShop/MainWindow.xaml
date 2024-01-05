@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:MyShop" xmlns:ctls="clr-namespace:MyShop.controls"
         mc:Ignorable="d"
         Title="MyShop" Height="750" Width="1200">
-
     <Window.Resources>
         <FontFamily x:Key="test" >/res/font/#SVN-Transformer</FontFamily>
 
@@ -173,14 +172,28 @@
                             Style="{StaticResource btn_style}">
                             <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/res/icon/line_chart.png"/>
                         </Button>
-                        <TextBlock Text="Statistic" 
+                        <TextBlock Text="Revenue Statistic" 
                                    Style="{StaticResource txt_style}"
                                    PreviewMouseDown="txtStatistic_MouseDown"
                                 >
                         </TextBlock>
                     </Grid>
 
-
+                    <Grid Style="{StaticResource expandGrid}">
+                        <Button 
+                            x:Name="btnProductStatistic" 
+                            Click="btnProductStatistic_Click" 
+                            MouseEnter="btnProductStatistic_MouseEnter"
+                            MouseLeave="btnProductStatistic_MouseLeave"
+                            Style="{StaticResource btn_style}">
+                            <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/res/icon/productStatistic.png"/>
+                        </Button>
+                        <TextBlock Text="Product Statistic" 
+                                Style="{StaticResource txt_style}"
+                                PreviewMouseDown="txtProductStatistic_MouseDown">
+                        </TextBlock>
+                    </Grid>
+                    
                     <Grid Style="{StaticResource expandGrid}">
                         <Button 
                             x:Name="btnOrder" 
@@ -195,6 +208,7 @@
                                 PreviewMouseDown="txtOrder_MouseDown">
                         </TextBlock>
                     </Grid>
+                    
 
 
                     <Grid HorizontalAlignment="Left">
@@ -205,6 +219,7 @@
                         </Path>
 
                     </Grid>
+                    
                     <Grid Style="{StaticResource expandGrid}">
                         <Button 
                             x:Name="btnSetting" 
@@ -249,11 +264,9 @@
                 <ColumnDefinition MinWidth="400" Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="300"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-
             <Frame Grid.Column="0"
                 Name="fContainer"
                 Margin="20"
-                
                 NavigationUIVisibility="Hidden">
             </Frame>
 

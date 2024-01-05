@@ -38,6 +38,7 @@ namespace MyShop.pages
         int _selectedProduct = -1;
         int _selectedEdit = -1;
         Int32 _totalCost = 0;
+        Int32 _totalProfit = 0;
         BindingList<OrderDetail> _od = new BindingList<OrderDetail>();
         public NewOrder()
         {
@@ -47,7 +48,6 @@ namespace MyShop.pages
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             getDataFromDatabase();
-
             ShipDate.SelectedDate = DateTime.Now.AddDays(3);
             ShipDate.DisplayDateStart = DateTime.Now.AddDays(3);
             ShipDate.DisplayDateEnd = DateTime.Now.AddYears(2);
@@ -78,7 +78,8 @@ namespace MyShop.pages
                         amount = (Int32)_dataReader["amount"],
                         os = (string)_dataReader["os"],
                         manufacturer = (string)_dataReader["manufacturer"],
-                        memoryStorage = (string)_dataReader["memoryStorage"]
+                        memoryStorage = (string)_dataReader["memoryStorage"],
+                        priceOriginal = (Int32)_dataReader["priceOriginal"]
                     };
                     _totalProductCount = (int)_dataReader["TotalCount"];
                     _product.Add(phone);
@@ -249,8 +250,8 @@ namespace MyShop.pages
                     } while (false);
                 }
 
-                sql = $"insert into CustomerOrder(phoneNum, createDate, shipmentDate, status, totalCost)" +
-                    $" values ('{phonenum}', '{DateTime.Now.ToString()}', '{ShipDate.SelectedDate.ToString()}', 'pending', {_totalCost})";
+                sql = $"insert into CustomerOrder(phoneNum, createDate, shipmentDate, status, totalCost, totalProfit)" +
+                    $" values ('{phonenum}', '{DateTime.Now.ToString()}', '{ShipDate.SelectedDate.ToString()}', 'pending', {_totalCost},{_totalProfit})";
 
                 command = new SqlCommand(sql, Database.Instance.Connection);
                 res = command.ExecuteNonQuery();
@@ -375,23 +376,25 @@ namespace MyShop.pages
                         {
                             item.amount = amount;
                             item.total = amount * _product[_selectedProduct].price;
+                            item.totalProfit = amount * _product[_selectedProduct].priceOriginal;
                         }
                         return;
                     }
-                }    
+                }
 
                 OrderDetail od = new OrderDetail()
                 {
                     phone = _product[_selectedProduct].name,
                     amount = amount,
                     image = _product[_selectedProduct].image,
-                    total = amount * _product[_selectedProduct].price
+                    total = amount * _product[_selectedProduct].price,
+                    totalProfit = amount * _product[_selectedProduct].priceOriginal
                 };
 
                 _od.Add(od);
 
                 _totalCost += od.total;
-
+                _totalProfit+= od.totalProfit;
                 OrderDetailList.ItemsSource = _od;
                 TotalCost.Text = _totalCost.ToString();
             } catch
@@ -477,6 +480,8 @@ namespace MyShop.pages
                         if (amount != _od[_selectedEdit].amount)
                         {
                             _totalCost += (amount - _od[_selectedEdit].amount) * item.price;
+                            _totalProfit += (amount - _od[_selectedEdit].amount) * item.priceOriginal;
+
                             _od[_selectedEdit].amount = amount;
 
                             _od[_selectedEdit].total = amount * item.price;
