@@ -21,7 +21,6 @@
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="0" VerticalAlignment="Top" MinHeight="60" MinWidth="400">
-                <TextBlock FontFamily="{StaticResource test}"><Run Text="Hi..."/></TextBlock>
                 <TextBlock FontFamily="{StaticResource test}" FontSize="35"><Run Text="Welcome back -- PRODUCT"/></TextBlock>
             </StackPanel>
 
@@ -31,6 +30,7 @@
                         <DockPanel Margin="0,0,0,0" >
                             <Grid DockPanel.Dock="Top">
                                 <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="4*" />
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
@@ -38,17 +38,18 @@
                                    
                                   
                                 </Grid.ColumnDefinitions>
-                                <TextBox x:Name="searchTextBox" Grid.Column="0" d:Text="abcde" Margin="10"  FontSize="15" Padding="5,0,5,0" Height="25" TextChanged="SearchTextBox_TextChanged" />
+                                <TextBlock Grid.Column="0" Text="Search" FontSize="20" VerticalAlignment="Center" Margin="10,0,10,0"/>
+                                <TextBox x:Name="searchTextBox" Grid.Column="1"  d:Text="abcde" Margin="10"  FontSize="15" Padding="5,0,5,0" Height="25" TextChanged="SearchTextBox_TextChanged" />
 
-                                <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="30,0,10,0">
+                                <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="30,0,10,0">
                                     <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center">Loại Sản phẩm:</TextBlock>
                                     <ComboBox Name="comboBox" HorizontalAlignment="Right" VerticalAlignment="Center" SelectionChanged="comboBox_Selected"></ComboBox>
                                 </StackPanel>
-                                <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="30,0,10,0">
+                                <StackPanel Grid.Column="3" Orientation="Horizontal" Margin="30,0,10,0">
                                     <TextBlock  Margin="10,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center">Khoảng giá:</TextBlock>
                                     <ComboBox  Name="priceComboBox" HorizontalAlignment="Right" VerticalAlignment="Center" SelectionChanged="priceComboBox_SelectionChanged"></ComboBox>
                                 </StackPanel>
-                                <StackPanel Grid.Column="3" Orientation="Horizontal" Margin="30,0,10,0">
+                                <StackPanel Grid.Column="4" Orientation="Horizontal" Margin="30,0,10,0">
                                     <Button x:Name="addButton" Margin="10" Content="New Product" Width="Auto" Height="30" HorizontalAlignment="Left" Click="addButton_Click"></Button>
                                 </StackPanel>
                                     
@@ -70,10 +71,13 @@
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Width="Auto" Header="ID" Binding="{Binding ID}" />
                                     <DataGridTextColumn Width="4*" Header="Name" Binding="{Binding Name}" />
-                                    <DataGridTextColumn Width="3*" Header="Operating System" Binding="{Binding OS}" />
+                                    <DataGridTextColumn Width="4*" Header="Operating System" Binding="{Binding OS}" />
                                     <DataGridTextColumn Width="2*" Header="Price" Binding="{Binding Price}" />
-                                    <DataGridTextColumn Width="2*" Header="Manufacturer" Binding="{Binding Manufacturer}" />
-                                    <DataGridTextColumn Width="3*" Header="Memory Storage" Binding="{Binding MemoryStorage}" />
+                                    <DataGridTextColumn Width="3*" Header="Price Original" Binding="{Binding PriceOriginal}" />
+                                    <DataGridTextColumn Width="2*" Header="Quantity" Binding="{Binding Quantity}" />
+                                    <DataGridTextColumn Width="3*" Header="Manufacturer" Binding="{Binding Manufacturer}" />
+                                    <DataGridTextColumn Width="4*" Header="Memory Storage" Binding="{Binding MemoryStorage}" />
+                                    <DataGridTextColumn Width="Auto" Header="Details" Binding="{Binding Details}" />
                                     <!-- Thêm các cột khác tương tự cho các trường dữ liệu khác trong DataTable -->
                                     <DataGridTemplateColumn Width="Auto">
                                         <DataGridTemplateColumn.CellTemplate>
@@ -85,6 +89,7 @@
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
+
                                 </DataGrid.Columns>
                             </DataGrid>
                         </DockPanel>
@@ -112,8 +117,12 @@
                             <TextBlock FontSize="20" Text="{Binding name}" Height="30"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock FontSize="20" HorizontalAlignment="Stretch"><Run Text="Giá:  "/></TextBlock>
+                            <TextBlock FontSize="20" HorizontalAlignment="Stretch"><Run Text="Giá bán:  "/></TextBlock>
                             <TextBlock FontSize="20" Text="{Binding price}" Height="30" HorizontalAlignment="Stretch"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="20" HorizontalAlignment="Stretch"><Run Text="Giá nhập:  "/></TextBlock>
+                            <TextBlock FontSize="20" Text="{Binding priceOriginal}" Height="30" HorizontalAlignment="Stretch"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontSize="20" HorizontalAlignment="Stretch"><Run Text="Hệ điều hành:  "/></TextBlock>
@@ -127,6 +136,15 @@
                             <TextBlock FontSize="20" HorizontalAlignment="Stretch"><Run Text="Nhà sản xuất:  "/></TextBlock>
                             <TextBlock FontSize="20" Text="{Binding manufacturer}" Height="30" HorizontalAlignment="Stretch"/>
                         </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="20" HorizontalAlignment="Stretch"><Run Text="Số lượng:  "/></TextBlock>
+                            <TextBlock FontSize="20" Text="{Binding quantity}" Height="30" HorizontalAlignment="Stretch"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="20" HorizontalAlignment="Stretch"><Run Text="Chi tiết:  "/></TextBlock>
+                            <TextBlock FontSize="20" Text="{Binding details}" Height="30" HorizontalAlignment="Stretch"/>
+                        </StackPanel>
+                        
                        
                     </StackPanel>
                    

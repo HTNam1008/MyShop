@@ -79,7 +79,7 @@ namespace MyShop
                 using (SqlConnection connection = new SqlConnection(this.ConnectionString))
                 {
                     tableExist = await TableExistsAsync();
-                    if (tableExist)
+                    if (!tableExist)
                     {
                         // Mở hộp thoại chọn file Excel
                         OpenFileDialog openFileDialog = new OpenFileDialog
@@ -90,8 +90,6 @@ namespace MyShop
                         if (openFileDialog.ShowDialog() == true)
                         {
                             string excelFilePath = openFileDialog.FileName;
-
-
                             // Đọc dữ liệu từ file Excel
                             using (var stream = System.IO.File.Open(excelFilePath, System.IO.FileMode.Open, System.IO.FileAccess.Read))
                             {
@@ -154,43 +152,93 @@ namespace MyShop
             bool result = false;
             try
             {
-                using (SqlCommand command = new SqlCommand($"IF OBJECT_ID('{this.tableName}', 'U') IS NOT NULL SELECT 1 ELSE SELECT 0", Connection))
+                using (SqlConnection connection = new SqlConnection(this.ConnectionString))
                 {
-                    await Connection.OpenAsync(); // Mở kết nối cơ sở dữ liệu không đồng bộ
-                    command.Connection = Connection;
-                    object queryResult = await command.ExecuteScalarAsync(); // Thực thi truy vấn không đồng bộ
-                    result = (int)queryResult == 1;
+                    await connection.OpenAsync(); // Mở kết nối cơ sở dữ liệu không đồng bộ
+                    using (SqlCommand command = new SqlCommand($"IF OBJECT_ID('{this.tableName}', 'U') IS NOT NULL SELECT 1 ELSE SELECT 0", connection))
+                    {
+                        object queryResult = await command.ExecuteScalarAsync(); // Thực thi truy vấn không đồng bộ
+                        result = (int)queryResult == 1;
+                    }
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error checking table existence: {ex.Message}");
             }
-            finally
-            {
-                if (Connection.State == ConnectionState.Open)
-                {
-                    Connection.Close();
-                }
-            }
 
             return result;
         }
         private void CreateNewTable(SqlConnection connection, string tableName, DataTable dataTable)
         {
-            using (SqlCommand command = new SqlCommand($"CREATE TABLE {tableName} (", connection))
+            try
             {
-                string outputData = "";
-                foreach (DataColumn col in dataTable.Columns)
+                if (connection.State != ConnectionState.Open)
                 {
-                    string columnType = GetSqlDbType(col.DataType);/*
-                    outputData += columnType;
-                    outputData += " ";*/
-                    command.CommandText += $"{col.ColumnName} {columnType}, ";
+                    connection.Open();
                 }
-                command.CommandText = command.CommandText.TrimEnd(',', ' ') + ");";
-                command.ExecuteNonQuery();
+
+                using (SqlCommand command = new SqlCommand($"CREATE TABLE {tableName} (", connection))
+                {
+                    string outputData = "";
+                    foreach (DataColumn col in dataTable.Columns)
+                    {
+                        string columnType = GetSqlDbType(col.DataType);
+                        command.CommandText += $"{col.ColumnName} {columnType}, ";
+                    }
+                    command.CommandText = command.CommandText.TrimEnd(',', ' ') + ");";
+                    command.ExecuteNonQuery();
+                }
             }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ khi thực hiện truy vấn
+                Console.WriteLine($"Error creating table: {ex.Message}");
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close(); // Đóng kết nối sau khi sử dụng
+                }
+            }
+        }
+        private void ImportData(SqlConnection connection, string tableName, DataTable dataTable)
+        {
+
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.Open();
+                }
+
+                using (SqlBulkCopy bulkCopy = new SqlBulkCopy(connection))
+                {
+                    bulkCopy.DestinationTableName = tableName;
+
+                    foreach (DataColumn col in dataTable.Columns)
+                    {
+                        bulkCopy.ColumnMappings.Add(col.ColumnName, col.ColumnName);
+                    }
+
+                    bulkCopy.WriteToServer(dataTable);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Xử lý lỗi khi ghi dữ liệu vào cơ sở dữ liệu
+                Console.WriteLine($"Error during data import: {ex.Message}");
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                {
+                    connection.Close(); // Đóng kết nối sau khi sử dụng
+                }
+            }
+
+
         }
 
         private string ConvertToNoSpaceNoAccent(string input)
@@ -220,31 +268,7 @@ namespace MyShop
         }
 
         // Hàm import dữ liệu vào bảng
-        private void ImportData(SqlConnection connection, string tableName, DataTable dataTable)
-        {
-
-            using (SqlBulkCopy bulkCopy = new SqlBulkCopy(connection))
-            {
-                bulkCopy.DestinationTableName = tableName;
-
-                foreach (DataColumn col in dataTable.Columns)
-                {
-                    bulkCopy.ColumnMappings.Add(col.ColumnName, col.ColumnName);
-                }
-
-                try
-                {
-                    bulkCopy.WriteToServer(dataTable);
-                }
-                catch (Exception ex)
-                {
-                    // Xử lý lỗi khi ghi dữ liệu vào cơ sở dữ liệu
-                    Console.WriteLine($"Error during data import: {ex.Message}");
-                }
-            } // Kết nối sẽ tự động đóng tại đây, ngay cả khi có lỗi.
-
-
-        }
+        
 
         // Hàm chuyển đổi kiểu dữ liệu .NET sang kiểu dữ liệu SQL
         private string GetSqlDbType(Type dataType)

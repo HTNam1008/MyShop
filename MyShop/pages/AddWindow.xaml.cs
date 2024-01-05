@@ -29,7 +29,9 @@ namespace MyShop.pages
         public string MemoryStorage { get; set; }
         public int Price { get; set; }
         public string Image { get; set; }
-
+        public string Details { get; set; }
+        public int PriceOriginal { get; set; }
+        public int Quantity { get; set; }
         public AddWindow(int Id)
         {
             InitializeComponent();
@@ -46,11 +48,13 @@ namespace MyShop.pages
             MemoryStorage = MemoryPhone.Text;
             Price = Convert.ToInt32(PricePhone.Text);
             Image = ImagePhone.Text;
-
+            Quantity = Convert.ToInt32(QuantityPhone.Text);
+            PriceOriginal = Convert.ToInt32(PriceOriginalPhone.Text);
+            Details=DetailsPhone.Text;
 
             string sql = """           
-                insert into ImportExcel(ID,Name, OS, Manufacturer, Price, MemoryStorage,Image )
-                values (@ID,@Name, @OS, @Manufacturer, @Price,@MemoryStorage,@Image)
+                insert into ImportExcel(ID,Name,Quantity, OS, Manufacturer,PriceOriginal, Price, MemoryStorage,Image,Details )
+                values (@ID,@Name,@Quantity, @OS, @Manufacturer,@PriceOriginal, @Price,@MemoryStorage,@Image,@Details)
                 select ident_current('ImportExcel')
                 """;
             if (Database.Instance.Connection.State == System.Data.ConnectionState.Closed)
@@ -72,6 +76,12 @@ namespace MyShop.pages
                 .Value = MemoryStorage;
             command.Parameters.Add("@Image", System.Data.SqlDbType.Text)
                 .Value = Image;
+            command.Parameters.Add("@details", System.Data.SqlDbType.Text)
+               .Value = Details;
+            command.Parameters.Add("@quantity", System.Data.SqlDbType.Int)
+                .Value = Quantity;
+            command.Parameters.Add("@priceOriginal", System.Data.SqlDbType.Int)
+                .Value = PriceOriginal;
             int count = command.ExecuteNonQuery();
 
             if (count > 0)

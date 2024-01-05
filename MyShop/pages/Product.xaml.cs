@@ -40,16 +40,15 @@ namespace MyShop.pages
         {
             InitializeComponent();
         }
-        private void PageOpened(object sender, RoutedEventArgs e)
+        private async void PageOpened(object sender, RoutedEventArgs e)
         {
-            Database.Instance.ImportDataToSQLAsync();
+            await Database.Instance.ImportDataToSQLAsync();
             LoadDataIntoGrid();
         }
         private void LoadDataIntoGrid()
         {
-            var sql = $"SELECT ID, Name, OS, Price, Manufacturer, MemoryStorage, Image FROM {Database.Instance.tableName}";
+            var sql = $"SELECT ID, Name, OS, Price, PriceOriginal, Quantity, Manufacturer, MemoryStorage, Details, Image FROM {Database.Instance.tableName}";
             var command = new SqlCommand(sql, Database.Instance.Connection);
-
             if (Database.Instance.Connection != null) { Database.Instance.Connection.Close(); }
 
             SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -57,8 +56,6 @@ namespace MyShop.pages
             adapter.Fill(MobileData);
             SetPageComboBox();
             SetPriceRangeComboBox();
-
-
         }
 
         private void SetPageComboBox()
@@ -96,6 +93,9 @@ namespace MyShop.pages
                         manufacturer = selectedRow["Manufacturer"].ToString(),
                         memoryStorage = selectedRow["MemoryStorage"].ToString(),
                         id = Convert.ToInt32(selectedRow["ID"].ToString()),
+                        quantity = Convert.ToInt32(selectedRow["Quantity"].ToString()),
+                        priceOriginal = Convert.ToInt32(selectedRow["PriceOriginal"].ToString()),
+                        details = selectedRow["Details"].ToString(),
                     };
                     /* _phone.Add(phone);*/
                     if (int.TryParse(selectedRow["Price"].ToString(), out int priceValue))
@@ -106,6 +106,7 @@ namespace MyShop.pages
                     {
                         phone.price = 0;
                     }
+
                     SetDetails(phone);
                 }
             }
@@ -289,7 +290,8 @@ namespace MyShop.pages
 
         private void UpdateComboBoxCurrentPage()
         {
-            comboPage.SelectedItem = currentPage; // Cập nhật ComboBox với trang hiện tại
+            comboPage.SelectedItem = currentPage;
+            comboPage.SelectedIndex = currentPage-1; // Cập nhật ComboBox với trang hiện tại
         }
 
         private void UpdateComboBoxCurrentPageInfo()
@@ -330,6 +332,11 @@ namespace MyShop.pages
                     manufacturer = selectedRow["Manufacturer"].ToString(),
                     memoryStorage = selectedRow["MemoryStorage"].ToString(),
                     id = Convert.ToInt32(selectedRow["ID"].ToString()),
+                    details = selectedRow["Details"].ToString(),
+                    quantity =Convert.ToInt32(selectedRow["Quantity"].ToString()),
+                    priceOriginal = Convert.ToInt32(selectedRow["PriceOriginal"].ToString())
+                    
+
                 };
                 /* _phone.Add(phone);*/
                 if (int.TryParse(selectedRow["Price"].ToString(), out int priceValue))
@@ -351,6 +358,9 @@ namespace MyShop.pages
                     editedRow["Image"] = phone.image;
                     editedRow["Manufacturer"] = phone.manufacturer;
                     editedRow["MemoryStorage"] = phone.memoryStorage;
+                    editedRow["Quantity"] = phone.quantity;
+                    editedRow["PriceOriginal"] = phone.priceOriginal;
+                    editedRow["Details"] = phone.details;
                     // Gọi Refresh để cập nhật hiển thị trong DataGrid
                     ListPhone.Items.Refresh();
                     SetPageComboBox();
@@ -430,8 +440,12 @@ namespace MyShop.pages
                 newRow["OS"] = screen.OS;
                 newRow["Manufacturer"] = screen.Manufacturer;
                 newRow["Price"] = screen.Price;
+                newRow["PriceOriginal"] = screen.PriceOriginal;
                 newRow["MemoryStorage"] = screen.MemoryStorage;
                 newRow["Image"] = screen.Image;
+                newRow["Quantity"] = screen.Quantity;
+                newRow["Details"] = screen.Details;
+ 
                 MobileData.Rows.Add(newRow);
 
                 ListPhone.ItemsSource = MobileData.DefaultView;

@@ -43,9 +43,12 @@ namespace MyShop.pages
             editPhone.memoryStorage = MemoryPhone.Text;
             editPhone.price =Convert.ToInt32(PricePhone.Text);
             editPhone.image= ImagePhone.Text;
+            editPhone.priceOriginal = Convert.ToInt32(PriceOriginalPhone.Text);
+            editPhone.quantity=Convert.ToInt32(QuantityPhone.Text);
+            editPhone.details = DetailsPhone.Text;
             string sql = """           
                 update ImportExcel
-                set Name=@name, OS=@os, Manufacturer=@manufacturer, Price=@price,MemoryStorage=@memoryStorage, Image=@image
+                set Name=@name, OS=@os, Manufacturer=@manufacturer, Price=@price,MemoryStorage=@memoryStorage, Image=@image, Details=@details, Quantity=@quantity, PriceOriginal=@priceOriginal
                 where ID=@ID
                 """;
             if (Database.Instance.Connection.State == System.Data.ConnectionState.Closed)
@@ -67,6 +70,12 @@ namespace MyShop.pages
                 .Value = editPhone.image;
             command.Parameters.Add("@ID", System.Data.SqlDbType.Int)
                 .Value = editPhone.id;
+            command.Parameters.Add("@details", System.Data.SqlDbType.Text)
+                .Value = editPhone.details;
+            command.Parameters.Add("@quantity", System.Data.SqlDbType.Int)
+                .Value = editPhone.quantity;
+            command.Parameters.Add("@priceOriginal", System.Data.SqlDbType.Int)
+                .Value = editPhone.priceOriginal;
 
             int count = command.ExecuteNonQuery();
 

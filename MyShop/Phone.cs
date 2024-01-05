@@ -19,5 +19,8 @@ namespace MyShop.pages
         public string manufacturer { get; set; }
 
         public string memoryStorage { get; set; }
+        public string details { get; set; }
+        public int priceOriginal { get; set; }
+        public int quantity { get; set; }
     }
 }
