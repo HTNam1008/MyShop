@@ -2,54 +2,60 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
-    <Compile Update="controls\MyOption.xaml.cs">
+    <Compile Update="ViewModel\Window1.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="controls\MyTextBox.xaml.cs">
+    <Compile Update="Views\controls\MyOption.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="pages\AddWindow.xaml.cs">
+    <Compile Update="Views\controls\MyTextBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="pages\EditWindow.xaml.cs">
+    <Compile Update="Views\MainView\pages\ProductView\AddWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="pages\InputDatabase.xaml.cs">
+    <Compile Update="Views\MainView\pages\ProductView\EditWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="pages\InputServer.xaml.cs">
+    <Compile Update="Views\MainView\DatabaseView\InputDatabase.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="pages\SignIn.xaml.cs">
+    <Compile Update="Views\MainView\DatabaseView\InputServer.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="pages\SignUp.xaml.cs">
+    <Compile Update="Views\SignInView\SignIn.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\SignUpView\SignUp.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="controls\MyOption.xaml">
+    <Page Update="ViewModel\Window1.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="controls\MyTextBox.xaml">
+    <Page Update="Views\controls\MyOption.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="pages\AddWindow.xaml">
+    <Page Update="Views\controls\MyTextBox.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="pages\EditWindow.xaml">
+    <Page Update="Views\MainView\pages\ProductView\AddWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="pages\InputDatabase.xaml">
+    <Page Update="Views\MainView\pages\ProductView\EditWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="pages\InputServer.xaml">
+    <Page Update="Views\MainView\DatabaseView\InputDatabase.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="pages\SignIn.xaml">
+    <Page Update="Views\MainView\DatabaseView\InputServer.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="pages\SignUp.xaml">
+    <Page Update="Views\SignInView\SignIn.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\SignUpView\SignUp.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

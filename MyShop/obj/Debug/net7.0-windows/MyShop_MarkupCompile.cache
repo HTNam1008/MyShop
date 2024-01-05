@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\
+D:\BaohocDH\CSN\WinDow\forMyShop\MVVM\MyShop\obj\Debug\net7.0-windows\
 MyShop
 none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\App.xaml
-17-160130685
+D:\BaohocDH\CSN\WinDow\forMyShop\MVVM\MyShop\App.xaml
+18-1809459567
 
-28539599005
-217-1069793139
-controls\MyOption.xaml;controls\MyTextBox.xaml;controls\UserPopUp.xaml;MainWindow.xaml;pages\AddWindow.xaml;pages\EditOrder.xaml;pages\EditWindow.xaml;pages\Home.xaml;pages\InputDatabase.xaml;pages\InputServer.xaml;pages\NewOrder.xaml;pages\Order.xaml;pages\Product.xaml;pages\Setting.xaml;pages\SignIn.xaml;pages\SignUp.xaml;pages\Statistic.xaml;
+451493870980
+217-761412319
+ViewModel\Window1.xaml;Views\controls\MyOption.xaml;Views\controls\MyTextBox.xaml;Views\controls\UserPopUp.xaml;Views\MainView\DatabaseView\InputDatabase.xaml;Views\MainView\DatabaseView\InputServer.xaml;Views\MainView\MainWindow.xaml;Views\MainView\pages\Home.xaml;Views\MainView\pages\OderView\EditOrder.xaml;Views\MainView\pages\OderView\NewOrder.xaml;Views\MainView\pages\OderView\Order.xaml;Views\MainView\pages\ProductView\AddWindow.xaml;Views\MainView\pages\ProductView\EditWindow.xaml;Views\MainView\pages\ProductView\Product.xaml;Views\MainView\pages\Setting.xaml;Views\MainView\pages\Statistic.xaml;Views\SignInView\SignIn.xaml;Views\SignUpView\SignUp.xaml;
 
-False
+True
 

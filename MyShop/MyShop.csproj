@@ -15,19 +15,21 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="res\icon\bar_chart.png" />
-    <None Remove="res\icon\close.png" />
-    <None Remove="res\icon\exit.png" />
-    <None Remove="res\icon\home.png" />
-    <None Remove="res\icon\line_chart.png" />
-    <None Remove="res\icon\minimize.png" />
-    <None Remove="res\icon\notification.png" />
-    <None Remove="res\icon\order.png" />
-    <None Remove="res\icon\pie_chart.png" />
-    <None Remove="res\icon\product.png" />
-    <None Remove="res\icon\restore.png" />
-    <None Remove="res\icon\setting.png" />
-    <None Remove="res\icon\toggle.png" />
+    <None Remove="DAO\NewFile1.txt" />
+    <None Remove="DTO\NewFile1.txt" />
+    <None Remove="Views\res\icon\bar_chart.png" />
+    <None Remove="Views\res\icon\close.png" />
+    <None Remove="Views\res\icon\exit.png" />
+    <None Remove="Views\res\icon\home.png" />
+    <None Remove="Views\res\icon\line_chart.png" />
+    <None Remove="Views\res\icon\minimize.png" />
+    <None Remove="Views\res\icon\notification.png" />
+    <None Remove="Views\res\icon\order.png" />
+    <None Remove="Views\res\icon\pie_chart.png" />
+    <None Remove="Views\res\icon\product.png" />
+    <None Remove="Views\res\icon\restore.png" />
+    <None Remove="Views\res\icon\setting.png" />
+    <None Remove="Views\res\icon\toggle.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,104 +41,104 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="res\icon\bar_chart.png">
+    <Resource Include="Views\res\icon\bar_chart.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="res\icon\close.png" />
-    <Resource Include="res\icon\exit.png">
+    <Resource Include="Views\res\icon\close.png" />
+    <Resource Include="Views\res\icon\exit.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="res\icon\home.png" />
-    <Resource Include="res\icon\line_chart.png">
+    <Resource Include="Views\res\icon\home.png" />
+    <Resource Include="Views\res\icon\line_chart.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="res\icon\minimize.png" />
-    <Resource Include="res\icon\notification.png">
+    <Resource Include="Views\res\icon\minimize.png" />
+    <Resource Include="Views\res\icon\notification.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="res\icon\order.png" />
-    <Resource Include="res\icon\pie_chart.png">
+    <Resource Include="Views\res\icon\order.png" />
+    <Resource Include="Views\res\icon\pie_chart.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="res\icon\product.png" />
-    <Resource Include="res\icon\restore.png" />
-    <Resource Include="res\icon\setting.png">
+    <Resource Include="Views\res\icon\product.png" />
+    <Resource Include="Views\res\icon\restore.png" />
+    <Resource Include="Views\res\icon\setting.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="res\icon\toggle.png" />
+    <Resource Include="Views\res\icon\toggle.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="res\asset\close.png">
+    <None Update="Views\res\asset\close.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="res\asset\database.png">
+    <None Update="Views\res\asset\database.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="res\asset\Email.png">
+    <None Update="Views\res\asset\Email.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="res\asset\eye.png">
+    <None Update="Views\res\asset\eye.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="res\asset\facebook.png">
+    <None Update="Views\res\asset\facebook.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="res\asset\female.png">
+    <None Update="Views\res\asset\female.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="res\asset\google.png">
+    <None Update="Views\res\asset\google.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="res\asset\img.png">
+    <None Update="Views\res\asset\img.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="res\asset\linkedin.png">
+    <None Update="Views\res\asset\linkedin.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="res\asset\Lock.png">
+    <None Update="Views\res\asset\Lock.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="res\asset\male.png">
+    <None Update="Views\res\asset\male.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="res\asset\minimize.png">
+    <None Update="Views\res\asset\minimize.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="res\asset\server.png">
+    <None Update="Views\res\asset\server.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="res\ava\ava_1.png">
+    <None Update="Views\res\ava\ava_1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="res\ava\ava_10.png">
+    <None Update="Views\res\ava\ava_10.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="res\ava\ava_2.png">
+    <None Update="Views\res\ava\ava_2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="res\ava\ava_3.png">
+    <None Update="Views\res\ava\ava_3.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="res\ava\ava_4.png">
+    <None Update="Views\res\ava\ava_4.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="res\ava\ava_5.png">
+    <None Update="Views\res\ava\ava_5.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="res\ava\ava_6.png">
+    <None Update="Views\res\ava\ava_6.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="res\ava\ava_7.png">
+    <None Update="Views\res\ava\ava_7.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="res\ava\ava_8.png">
+    <None Update="Views\res\ava\ava_8.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="res\ava\ava_9.png">
+    <None Update="Views\res\ava\ava_9.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="res\icon\error.png">
+    <None Update="Views\res\icon\error.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
