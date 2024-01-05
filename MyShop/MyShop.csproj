@@ -67,6 +67,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="pages\NewCustomer.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="res\asset\close.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\
+C:\Users\Dell\source\repos\HTNam1008\MyShop\MyShop\obj\Debug\net7.0-windows\
 MyShop
 none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
-D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\App.xaml
-17-160130685
+C:\Users\Dell\source\repos\HTNam1008\MyShop\MyShop\App.xaml
+20135132283
 
-28539599005
-217-1069793139
-controls\MyOption.xaml;controls\MyTextBox.xaml;controls\UserPopUp.xaml;MainWindow.xaml;pages\AddWindow.xaml;pages\EditOrder.xaml;pages\EditWindow.xaml;pages\Home.xaml;pages\InputDatabase.xaml;pages\InputServer.xaml;pages\NewOrder.xaml;pages\Order.xaml;pages\Product.xaml;pages\Setting.xaml;pages\SignIn.xaml;pages\SignUp.xaml;pages\Statistic.xaml;
+31-1492704130
+217-2020058644
+controls\MyOption.xaml;controls\MyTextBox.xaml;controls\UserPopUp.xaml;MainWindow.xaml;pages\AddWindow.xaml;pages\CustomerManagement.xaml;pages\EditCustomer.xaml;pages\EditOrder.xaml;pages\EditWindow.xaml;pages\Home.xaml;pages\InputDatabase.xaml;pages\InputServer.xaml;pages\NewCustomer.xaml;pages\NewOrder.xaml;pages\Order.xaml;pages\Product.xaml;pages\Setting.xaml;pages\SignIn.xaml;pages\SignUp.xaml;pages\Statistic.xaml;
 
 False
 

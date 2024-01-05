@@ -50,7 +50,7 @@ namespace MyShop
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-
+            fContainer.Navigate(new System.Uri("pages/CustomerManagement.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void btnNotification_Click(object sender, RoutedEventArgs e)
