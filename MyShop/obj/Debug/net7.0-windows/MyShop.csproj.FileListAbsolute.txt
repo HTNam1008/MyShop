@@ -66,10 +66,12 @@ D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-wi
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\controls\UserPopUp.g.cs
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\MainWindow.g.cs
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\AddWindow.g.cs
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\EditOrder.g.cs
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\EditWindow.g.cs
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Home.g.cs
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\InputDatabase.g.cs
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\InputServer.g.cs
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\NewOrder.g.cs
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Order.g.cs
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Product.g.cs
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Setting.g.cs
@@ -86,10 +88,12 @@ D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-wi
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\controls\UserPopUp.baml
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\MainWindow.baml
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\AddWindow.baml
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\EditOrder.baml
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\EditWindow.baml
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Home.baml
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\InputDatabase.baml
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\InputServer.baml
+D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\NewOrder.baml
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Order.baml
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Product.baml
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\obj\Debug\net7.0-windows\pages\Setting.baml

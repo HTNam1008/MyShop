@@ -68,7 +68,7 @@ namespace MyShop
             }
         }
 
-        public string tableName = "ImportExcel";
+        public string tableName = "Mobile";
         public string Name { get; set; }
         public bool tableExist { get; set; }
         public async Task ImportDataToSQLAsync()

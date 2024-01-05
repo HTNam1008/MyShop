@@ -60,7 +60,7 @@ namespace MyShop
 
         private void btnOrder_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("pages/Setting.xaml", UriKind.RelativeOrAbsolute));
+            fContainer.Navigate(new System.Uri("pages/Order.xaml", UriKind.RelativeOrAbsolute));
         }
 
 

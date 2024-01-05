@@ -5,10 +5,12 @@ FD:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\controls\MyTextBox
 FD:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\controls\UserPopUp.xaml;;
 FD:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\MainWindow.xaml;;
 FD:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\pages\AddWindow.xaml;;
+FD:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\pages\EditOrder.xaml;;
 FD:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\pages\EditWindow.xaml;;
 FD:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\pages\Home.xaml;;
 FD:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\pages\InputDatabase.xaml;;
 FD:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\pages\InputServer.xaml;;
+FD:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\pages\NewOrder.xaml;;
 FD:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\pages\Order.xaml;;
 FD:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\pages\Product.xaml;;
 FD:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\pages\Setting.xaml;;

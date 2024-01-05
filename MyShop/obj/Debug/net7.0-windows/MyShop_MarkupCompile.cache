@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 D:\HCMUS\third\HK1_3\Window\project\MyShopDat2\MyShop\MyShop\App.xaml
-15140709020
+17-160130685
 
-231485484100
+28539599005
 217-1069793139
-controls\MyOption.xaml;controls\MyTextBox.xaml;controls\UserPopUp.xaml;MainWindow.xaml;pages\AddWindow.xaml;pages\EditWindow.xaml;pages\Home.xaml;pages\InputDatabase.xaml;pages\InputServer.xaml;pages\Order.xaml;pages\Product.xaml;pages\Setting.xaml;pages\SignIn.xaml;pages\SignUp.xaml;pages\Statistic.xaml;
+controls\MyOption.xaml;controls\MyTextBox.xaml;controls\UserPopUp.xaml;MainWindow.xaml;pages\AddWindow.xaml;pages\EditOrder.xaml;pages\EditWindow.xaml;pages\Home.xaml;pages\InputDatabase.xaml;pages\InputServer.xaml;pages\NewOrder.xaml;pages\Order.xaml;pages\Product.xaml;pages\Setting.xaml;pages\SignIn.xaml;pages\SignUp.xaml;pages\Statistic.xaml;
 
 False
 
