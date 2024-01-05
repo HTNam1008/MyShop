@@ -72,17 +72,6 @@ namespace MyShop.pages
                 /*MessageBox.Show("Successfully connected to SQL Server");*/
                 if (rememberMe.IsChecked == true)
                 {
-                    /*var passwordInBytes = Encoding.UTF8.GetBytes(password);
-                    var entropy = new byte[20];
-                    using (var rng = new RNGCryptoServiceProvider())
-                    {
-                        rng.GetBytes(entropy);
-                    }
-                    var cypherText = ProtectedData.Protect(passwordInBytes, entropy,
-                            DataProtectionScope.CurrentUser);
-                    var passwordIn64 = Convert.ToBase64String(cypherText);
-                    var entropyIn64 = Convert.ToBase64String(entropy);*/
-
                     string passwordIn64 = Encryption.Encrypt(password, "1234567890123456");
 
 
@@ -97,30 +86,20 @@ namespace MyShop.pages
 
                 Database.Instance.ConnectionString = connectionString;
 
-                var sql = "SELECT * FROM CUSTOMER WHERE Email = @username";
+                var sql = "SELECT * FROM Admin WHERE Email = @username";
                 var command = new SqlCommand(sql, Database.Instance.Connection);
                 command.Parameters.Add("@Username", System.Data.SqlDbType.Char)
                     .Value = username;
-                
 
                 var reader = command.ExecuteReader();
 
+                
                 if(reader.Read())
                 {
                     /*MessageBox.Show("Successfully signed in");*/
                     string passwordResult = (string)reader["Password"];
 
                     // unhash password
-                    /*string[] passwordResultSplit = passwordResult.Split("@@@@");
-                    string passwordIn64 = passwordResultSplit[0];
-                    string entropyIn64 = passwordResultSplit[1];
-
-                    var cyperTextInBytes = Convert.FromBase64String(passwordIn64);
-                    var entropyInBytes = Convert.FromBase64String(entropyIn64);
-
-                    var passwordInBytes = ProtectedData.Unprotect(cyperTextInBytes, entropyInBytes,
-                                               DataProtectionScope.CurrentUser);
-                    var passwordResultUnhash = Encoding.UTF8.GetString(passwordInBytes);*/
 
                     string passwordResultUnhash = Encryption.Decrypt(passwordResult, "1234567890123456");
 
@@ -171,15 +150,6 @@ namespace MyShop.pages
 
             if (passwordIn64.Length != 0)
             {
-                /*var entropyIn64 = ConfigurationManager.AppSettings["Entropy"];
-
-                var cyperTextInBytes = Convert.FromBase64String(passwordIn64);
-                var entropyInBytes = Convert.FromBase64String(entropyIn64);
-
-                var passwordInBytes = ProtectedData.Unprotect(cyperTextInBytes, entropyInBytes,
-                    DataProtectionScope.CurrentUser);
-                var password = Encoding.UTF8.GetString(passwordInBytes);*/
-
                 string password = Encryption.Decrypt(passwordIn64, "1234567890123456");
                 passwordBox.Password = password;
 
